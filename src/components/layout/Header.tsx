@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 
 export default function Header() {
   const pathname = usePathname();
+  if (pathname === "/") return null;
 
   const campusLink = (campus: string, label: string) => {
     const href = `/archive/${campus}/`;
