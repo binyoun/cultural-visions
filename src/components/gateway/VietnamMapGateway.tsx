@@ -39,7 +39,7 @@ export default function VietnamMapGateway() {
   const [hoveredNode, setHoveredNode] = useState<string | null>(null);
 
   return (
-    <div className="fixed inset-0 bg-[#0f0d0b] flex items-center justify-center">
+    <div className="fixed inset-0 bg-[#121212] flex items-center justify-center">
       <svg
         viewBox="0 0 200 450"
         className="h-[80vh] max-h-[700px] w-auto"

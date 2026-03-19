@@ -28,7 +28,7 @@ export default function Header() {
   const isHonored = pathname === "/honored/";
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[#0f0d0b]/80 backdrop-blur-md border-b border-white/5">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[#121212]/80 backdrop-blur-md border-b border-white/5">
       <div className="h-14 px-6 lg:px-10 grid grid-cols-3 items-center">
         {/* Left */}
         <Link href="/" className="flex flex-col leading-tight group">
@@ -77,7 +77,7 @@ export default function Header() {
             href="/honored/"
             className={`text-xs font-medium px-5 py-2 rounded-full border transition-colors ${
               isHonored
-                ? "bg-[#c9a84c] text-[#0f0d0b] border-[#c9a84c]"
+                ? "bg-[#c9a84c] text-[#121212] border-[#c9a84c]"
                 : "border-[#c9a84c]/40 text-[#c9a84c]/70 hover:border-[#c9a84c] hover:text-[#c9a84c]"
             }`}
           >

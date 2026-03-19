@@ -10,7 +10,7 @@ const config: Config = {
     extend: {
       colors: {
         gallery: {
-          bg: "#0f0d0b",
+          bg: "#121212",
           surface: "#1a1612",
           border: "#2e2820",
           muted: "#6b5c4a",

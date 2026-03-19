@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --gallery-bg: #0f0d0b;
+  --gallery-bg: #121212;
   --gallery-surface: #1a1612;
   --gallery-border: #2e2820;
   --gallery-muted: #6b5c4a;
@@ -19,7 +19,7 @@ html {
 
 body {
   min-height: 100vh;
-  background-color: #0f0d0b;
+  background-color: #121212;
   color: #f0e6d3;
   font-family: Inter, "DM Sans", sans-serif;
 }
@@ -30,7 +30,7 @@ body {
 
 ::selection {
   background-color: #c9a84c;
-  color: #0f0d0b;
+  color: #121212;
 }
 
 img {
