@@ -4,6 +4,7 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import gatewayCard from "../../../public/gateway-card.png";
 
 // ── Floating cloud (祥云 inspired) ──────────────────────────────────────
 function Cloud({ style }: { style: React.CSSProperties }) {
@@ -214,7 +215,7 @@ export default function VietnamMapGateway() {
           }}
         >
           <Image
-            src="/gateway-card.png"
+            src={gatewayCard}
             alt="Cultural Visions — Vietnam Map"
             fill
             priority
