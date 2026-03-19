@@ -4,4 +4,5 @@ export interface Artist {
   shortBio: string;
   longBio: string;
   cohort: string;
+  campus: "Hanoi" | "Saigon";
 }

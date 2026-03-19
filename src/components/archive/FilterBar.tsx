@@ -24,7 +24,7 @@ export default function FilterBar({
   total,
 }: FilterBarProps) {
   return (
-    <div className="sticky top-16 z-40 bg-[#121212]/90 backdrop-blur-sm border-b border-[#2a2a2a] py-3">
+    <div className="sticky top-14 z-40 bg-[#121212]/90 backdrop-blur-sm border-b border-white/5 py-3">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row sm:items-center gap-3">
           {/* Tags */}
