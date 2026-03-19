@@ -10,13 +10,17 @@ const config: Config = {
     extend: {
       colors: {
         gallery: {
-          bg: "#121212",
-          surface: "#1e1e1e",
-          border: "#2a2a2a",
-          muted: "#6b6b6b",
-          secondary: "#9ca3af",
-          primary: "#e5e5e5",
+          bg: "#0f0d0b",
+          surface: "#1a1612",
+          border: "#2e2820",
+          muted: "#6b5c4a",
+          secondary: "#b0967a",
+          primary: "#f0e6d3",
           accent: "#c9a84c",
+        },
+        campus: {
+          hanoi: "#4a8f9e",
+          saigon: "#b85c38",
         },
       },
       fontFamily: {

@@ -1,13 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --gallery-bg: #121212;
-  --gallery-surface: #1e1e1e;
-  --gallery-border: #2a2a2a;
-  --gallery-muted: #6b6b6b;
-  --gallery-secondary: #9ca3af;
-  --gallery-primary: #e5e5e5;
+  --gallery-bg: #0f0d0b;
+  --gallery-surface: #1a1612;
+  --gallery-border: #2e2820;
+  --gallery-muted: #6b5c4a;
+  --gallery-secondary: #b0967a;
+  --gallery-primary: #f0e6d3;
   --gallery-accent: #c9a84c;
+  --campus-hanoi: #4a8f9e;
+  --campus-saigon: #b85c38;
 }
 
 html {
@@ -17,8 +19,8 @@ html {
 
 body {
   min-height: 100vh;
-  background-color: #121212;
-  color: #e5e5e5;
+  background-color: #0f0d0b;
+  color: #f0e6d3;
   font-family: Inter, "DM Sans", sans-serif;
 }
 
@@ -28,7 +30,7 @@ body {
 
 ::selection {
   background-color: #c9a84c;
-  color: #121212;
+  color: #0f0d0b;
 }
 
 img {

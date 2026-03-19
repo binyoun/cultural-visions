@@ -60,7 +60,7 @@ export default function GatewayPage({ artworks }: GatewayPageProps) {
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 overflow-hidden bg-[#121212]"
+      className="fixed inset-0 overflow-hidden bg-[#0f0d0b]"
       style={{ zIndex: 0 }}
     >
       <AnimatePresence mode="wait">
@@ -97,7 +97,7 @@ export default function GatewayPage({ artworks }: GatewayPageProps) {
               className="absolute inset-0 pointer-events-none"
               style={{
                 background:
-                  "radial-gradient(ellipse 60% 60% at 50% 50%, transparent 30%, rgba(18,18,18,0.7) 100%)",
+                  "radial-gradient(ellipse 60% 60% at 50% 50%, transparent 30%, rgba(15,13,11,0.7) 100%)",
               }}
             />
 
@@ -112,21 +112,25 @@ export default function GatewayPage({ artworks }: GatewayPageProps) {
               >
                 {/* Glassmorphic pill */}
                 <div
-                  className="px-8 py-3 rounded-full border border-white/15 backdrop-blur-md
+                  className="px-8 py-3 rounded-full backdrop-blur-md
                     text-[11px] tracking-[0.35em] uppercase text-white/70
-                    hover:text-white hover:border-white/35 transition-all duration-500"
+                    hover:text-white transition-all duration-500 flex flex-col items-center gap-0.5"
                   style={{
                     background: "rgba(255,255,255,0.04)",
+                    border: "1px solid rgba(201,168,76,0.3)",
                     boxShadow: "0 0 40px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.08)",
                   }}
                 >
-                  Enter the Archive
+                  <span>Enter the Archive</span>
+                  <span className="text-[9px] tracking-[0.2em] text-[#c9a84c]/50 normal-case font-light italic">
+                    Vào Kho Lưu Trữ
+                  </span>
                 </div>
                 {/* Animated chevron */}
                 <motion.div
                   animate={{ y: [0, 5, 0] }}
                   transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
-                  className="text-white/20"
+                  className="text-[#c9a84c]/40"
                 >
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
                     <path d="M6 9l6 6 6-6" />
@@ -233,6 +237,11 @@ function FloatingImage({
 
 // ── Campus panel ────────────────────────────────────────────────────────────
 
+const CAMPUS_COLORS: Record<string, { color: string; wash: string; viLabel: string }> = {
+  hanoi: { color: "#4a8f9e", wash: "rgba(74,143,158,0.12)", viLabel: "HÀ NỘI" },
+  saigon: { color: "#b85c38", wash: "rgba(184,92,56,0.12)", viLabel: "SÀI GÒN" },
+};
+
 interface CampusPanelProps {
   campus: string;
   label: string;
@@ -240,8 +249,9 @@ interface CampusPanelProps {
   onSelect: () => void;
 }
 
-function CampusPanel({ label, artwork, onSelect }: CampusPanelProps) {
+function CampusPanel({ campus, label, artwork, onSelect }: CampusPanelProps) {
   const [hovered, setHovered] = useState(false);
+  const campusTheme = CAMPUS_COLORS[campus] ?? { color: "#f0e6d3", wash: "rgba(240,230,211,0.08)", viLabel: label };
 
   return (
     <motion.button
@@ -280,26 +290,43 @@ function CampusPanel({ label, artwork, onSelect }: CampusPanelProps) {
         className="absolute inset-0"
         animate={{
           background: hovered
-            ? "rgba(0,0,0,0.35)"
+            ? `rgba(0,0,0,0.35)`
             : "rgba(0,0,0,0.65)",
         }}
         transition={{ duration: 0.9, ease: "easeInOut" }}
       />
 
+      {/* Campus color wash on hover */}
+      <motion.div
+        className="absolute inset-0 pointer-events-none"
+        animate={{ opacity: hovered ? 1 : 0, background: campusTheme.wash }}
+        transition={{ duration: 0.9, ease: "easeInOut" }}
+      />
+
       {/* City label */}
       <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
-        <motion.h2
-          className="font-sans font-light tracking-[0.45em] uppercase"
-          animate={{
-            color: hovered ? "rgba(255,255,255,1)" : "rgba(209,213,219,0.75)",
-            fontSize: hovered ? "2.75rem" : "2.5rem",
-          }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
-        >
-          {label}
-        </motion.h2>
+        <motion.div className="flex flex-col items-center gap-1">
+          <motion.h2
+            className="font-sans font-light tracking-[0.45em] uppercase"
+            animate={{
+              color: hovered ? campusTheme.color : "rgba(209,213,219,0.75)",
+              fontSize: hovered ? "2.75rem" : "2.5rem",
+            }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+          >
+            {label}
+          </motion.h2>
+          <motion.span
+            className="text-[10px] tracking-[0.2em] font-light italic"
+            animate={{ color: hovered ? campusTheme.color : "rgba(209,213,219,0.3)" }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+          >
+            {campusTheme.viLabel}
+          </motion.span>
+        </motion.div>
         <motion.div
-          className="h-px bg-white"
+          className="h-px"
+          style={{ backgroundColor: campusTheme.color }}
           animate={{ width: hovered ? 60 : 30, opacity: hovered ? 0.7 : 0.25 }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
         />

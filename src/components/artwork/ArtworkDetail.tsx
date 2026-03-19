@@ -17,7 +17,7 @@ export default function ArtworkDetail({ artwork }: ArtworkDetailProps) {
         </div>
 
         {/* Meta panel — scrollable */}
-        <div className="bg-[#1e1e1e] border-l border-[#2a2a2a] p-6 lg:p-10 overflow-y-auto">
+        <div className="bg-[#1a1612] border-l border-[#2e2820] p-6 lg:p-10 overflow-y-auto">
           <ArtworkMeta artwork={artwork} />
         </div>
       </div>

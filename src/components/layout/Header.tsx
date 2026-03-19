@@ -9,30 +9,37 @@ export default function Header() {
   const campusLink = (campus: string, label: string) => {
     const href = `/archive/${campus}/`;
     const isActive = pathname.includes(`/archive/${campus}`);
+    const activeColor = campus === "hanoi" ? "#4a8f9e" : "#b85c38";
     return (
       <Link
         href={href}
         className={`text-sm tracking-widest uppercase transition-colors pb-0.5 ${
           isActive
-            ? "text-white border-b border-white"
+            ? "border-b"
             : "text-gray-500 hover:text-gray-300"
         }`}
+        style={isActive ? { color: activeColor, borderColor: activeColor } : undefined}
       >
         {label}
       </Link>
     );
   };
 
+  const isHonored = pathname === "/honored/";
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[#121212]/80 backdrop-blur-md border-b border-white/5">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[#0f0d0b]/80 backdrop-blur-md border-b border-white/5">
       <div className="h-14 px-6 lg:px-10 grid grid-cols-3 items-center">
         {/* Left */}
         <Link href="/" className="flex flex-col leading-tight group">
-          <span className="text-[11px] tracking-[0.2em] uppercase text-gray-500 group-hover:text-gray-300 transition-colors">
+          <span className="text-[11px] tracking-[0.2em] uppercase text-[#6b5c4a] group-hover:text-[#b0967a] transition-colors">
             RMIT University Vietnam
           </span>
-          <span className="text-[11px] tracking-[0.15em] uppercase text-gray-400 group-hover:text-gray-200 transition-colors hidden sm:block">
-            Cultural Visions: Curatorial Photo Archive
+          <span className="text-[11px] tracking-[0.15em] uppercase text-[#6b5c4a] group-hover:text-[#b0967a] transition-colors hidden sm:block">
+            Cultural Visions
+          </span>
+          <span className="text-[10px] tracking-[0.1em] text-[#6b5c4a]/60 group-hover:text-[#6b5c4a] transition-colors hidden sm:block font-light italic">
+            Triển Lãm Ảnh Nghệ Thuật
           </span>
         </Link>
 
@@ -48,7 +55,7 @@ export default function Header() {
           {/* Search icon */}
           <button
             aria-label="Search"
-            className="text-gray-500 hover:text-gray-200 transition-colors"
+            className="text-[#6b5c4a] hover:text-[#b0967a] transition-colors"
           >
             <svg
               width="16"
@@ -68,10 +75,10 @@ export default function Header() {
           {/* Honored Works pill */}
           <Link
             href="/honored/"
-            className={`text-[11px] tracking-widest uppercase px-3 py-1 rounded-full border transition-colors ${
-              pathname === "/honored/"
-                ? "border-white/40 text-white"
-                : "border-white/10 text-gray-500 hover:border-white/30 hover:text-gray-300"
+            className={`text-xs font-medium px-5 py-2 rounded-full border transition-colors ${
+              isHonored
+                ? "bg-[#c9a84c] text-[#0f0d0b] border-[#c9a84c]"
+                : "border-[#c9a84c]/40 text-[#c9a84c]/70 hover:border-[#c9a84c] hover:text-[#c9a84c]"
             }`}
           >
             Honored Works
