@@ -1,9 +1,9 @@
-import type { ArtworkWithArtist } from "@/lib/dataLoader";
+import type { ArtworkMatter } from "@/types/artwork";
 import ArtworkImage from "./ArtworkImage";
 import ArtworkMeta from "./ArtworkMeta";
 
 interface ArtworkDetailProps {
-  artwork: ArtworkWithArtist;
+  artwork: ArtworkMatter;
 }
 
 export default function ArtworkDetail({ artwork }: ArtworkDetailProps) {

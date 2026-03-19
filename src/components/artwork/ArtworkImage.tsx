@@ -1,10 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import type { Artwork } from "@/types/artwork";
+import type { ArtworkMatter } from "@/types/artwork";
 
 interface ArtworkImageProps {
-  artwork: Artwork;
+  artwork: ArtworkMatter;
 }
 
 export default function ArtworkImage({ artwork }: ArtworkImageProps) {

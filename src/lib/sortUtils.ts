@@ -1,11 +1,11 @@
-import type { ArtworkWithArtist } from "./dataLoader";
+import type { ArtworkMatter } from "@/types/artwork";
 
 export type SortOption = "year-desc" | "year-asc" | "artist-az";
 
 export function sortArtworks(
-  artworks: ArtworkWithArtist[],
+  artworks: ArtworkMatter[],
   sort: SortOption
-): ArtworkWithArtist[] {
+): ArtworkMatter[] {
   const copy = [...artworks];
   switch (sort) {
     case "year-desc":
@@ -14,7 +14,7 @@ export function sortArtworks(
       return copy.sort((a, b) => a.year - b.year);
     case "artist-az":
       return copy.sort((a, b) =>
-        a.artist.displayName.localeCompare(b.artist.displayName)
+        a.artistName.localeCompare(b.artistName)
       );
     default:
       return copy;
@@ -22,9 +22,9 @@ export function sortArtworks(
 }
 
 export function filterArtworksByTags(
-  artworks: ArtworkWithArtist[],
+  artworks: ArtworkMatter[],
   activeTags: string[]
-): ArtworkWithArtist[] {
+): ArtworkMatter[] {
   if (activeTags.length === 0) return artworks;
   return artworks.filter((aw) =>
     activeTags.every((tag) => aw.tags.includes(tag))

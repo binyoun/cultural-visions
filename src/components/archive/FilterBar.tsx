@@ -1,11 +1,10 @@
 "use client";
 
-import type { TaxonomyTag } from "@/types/taxonomy";
 import type { SortOption } from "@/lib/sortUtils";
 import TagPill from "@/components/ui/TagPill";
 
 interface FilterBarProps {
-  tags: TaxonomyTag[];
+  tags: string[];
   activeTags: string[];
   onTagToggle: (tag: string) => void;
   sort: SortOption;
@@ -31,10 +30,10 @@ export default function FilterBar({
           <div className="flex flex-wrap gap-2 flex-1">
             {tags.map((tag) => (
               <TagPill
-                key={tag.id}
-                label={tag.label}
-                active={activeTags.includes(tag.label)}
-                onClick={() => onTagToggle(tag.label)}
+                key={tag}
+                label={tag}
+                active={activeTags.includes(tag)}
+                onClick={() => onTagToggle(tag)}
               />
             ))}
           </div>

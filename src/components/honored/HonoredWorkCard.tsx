@@ -2,11 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import type { ArtworkWithArtist } from "@/lib/dataLoader";
+import type { ArtworkMatter } from "@/types/artwork";
 import TagPill from "@/components/ui/TagPill";
 
 interface HonoredWorkCardProps {
-  artwork: ArtworkWithArtist;
+  artwork: ArtworkMatter;
   index: number;
 }
 
@@ -57,7 +57,7 @@ export default function HonoredWorkCard({ artwork, index }: HonoredWorkCardProps
             <h2 className="font-serif text-3xl sm:text-4xl text-[#e5e5e5] leading-tight">
               {artwork.title}
             </h2>
-            <p className="mt-2 text-[#9ca3af] text-lg">{artwork.artist.displayName}</p>
+            <p className="mt-2 text-[#9ca3af] text-lg">{artwork.artistName}</p>
             <p className="text-[#6b6b6b] text-sm mt-1">{artwork.year}</p>
           </div>
 
@@ -87,7 +87,7 @@ export default function HonoredWorkCard({ artwork, index }: HonoredWorkCardProps
 
           <div className="pt-2">
             <p className="text-xs text-[#6b6b6b]">
-              © {artwork.year} {artwork.artist.displayName}. All rights reserved.
+              © {artwork.year} {artwork.artistName}. All rights reserved.
             </p>
           </div>
 

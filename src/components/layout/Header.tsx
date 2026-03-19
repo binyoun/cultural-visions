@@ -81,6 +81,12 @@ export default function Header() {
                 : "border-[#c9a84c]/40 text-[#c9a84c]/70 hover:border-[#c9a84c] hover:text-[#c9a84c]"
             }`}
           >
+            <span
+              className="text-[#c9a84c]"
+              style={{ textShadow: "0 0 6px #c9a84c, 0 0 14px rgba(201,168,76,0.5)" }}
+            >
+              ★
+            </span>{" "}
             Honored Works
           </Link>
         </div>

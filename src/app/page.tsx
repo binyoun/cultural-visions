@@ -1,7 +1,5 @@
-import { loadAllArtworks } from "@/lib/dataLoader";
-import GatewayPage from "@/components/gateway/GatewayPage";
+import VietnamMapGateway from "@/components/gateway/VietnamMapGateway";
 
 export default function HomePage() {
-  const artworks = loadAllArtworks();
-  return <GatewayPage artworks={artworks} />;
+  return <VietnamMapGateway />;
 }

@@ -1,37 +1,35 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { loadAllArtworks, loadTaxonomy } from "@/lib/dataLoader";
 import { sortArtworks, filterArtworksByTags } from "@/lib/sortUtils";
 import type { SortOption } from "@/lib/sortUtils";
+import type { ArtworkMatter } from "@/types/artwork";
 import FilterBar from "@/components/archive/FilterBar";
 import ArchiveGrid from "@/components/archive/ArchiveGrid";
 import PageWrapper from "@/components/layout/PageWrapper";
 
-const allArtworks = loadAllArtworks();
-const taxonomy = loadTaxonomy();
-
 interface Props {
   campus: string;
+  initialArtworks: ArtworkMatter[];
+  availableTags: string[];
 }
 
-export default function CampusArchive({ campus }: Props) {
+export default function CampusArchive({
+  campus,
+  initialArtworks,
+  availableTags,
+}: Props) {
   const campusLabel = (campus.charAt(0).toUpperCase() + campus.slice(1)) as
     | "Hanoi"
     | "Saigon";
-
-  const campusArtworks = useMemo(
-    () => allArtworks.filter((aw) => aw.artist.campus === campusLabel),
-    [campusLabel]
-  );
 
   const [activeTags, setActiveTags] = useState<string[]>([]);
   const [sort, setSort] = useState<SortOption>("year-desc");
 
   const filteredAndSorted = useMemo(() => {
-    const filtered = filterArtworksByTags(campusArtworks, activeTags);
+    const filtered = filterArtworksByTags(initialArtworks, activeTags);
     return sortArtworks(filtered, sort);
-  }, [campusArtworks, activeTags, sort]);
+  }, [initialArtworks, activeTags, sort]);
 
   const handleTagToggle = (tag: string) => {
     setActiveTags((prev) =>
@@ -57,13 +55,13 @@ export default function CampusArchive({ campus }: Props) {
       </div>
 
       <FilterBar
-        tags={taxonomy.tags}
+        tags={availableTags}
         activeTags={activeTags}
         onTagToggle={handleTagToggle}
         sort={sort}
         onSortChange={setSort}
         count={filteredAndSorted.length}
-        total={campusArtworks.length}
+        total={initialArtworks.length}
       />
       <PageWrapper className="mt-6">
         <ArchiveGrid artworks={filteredAndSorted} />

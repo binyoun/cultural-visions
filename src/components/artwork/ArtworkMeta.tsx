@@ -1,9 +1,9 @@
-import type { ArtworkWithArtist } from "@/lib/dataLoader";
+import type { ArtworkMatter } from "@/types/artwork";
 import TagPill from "@/components/ui/TagPill";
 import Link from "next/link";
 
 interface ArtworkMetaProps {
-  artwork: ArtworkWithArtist;
+  artwork: ArtworkMatter;
 }
 
 function SectionLabel({ en, vi }: { en: string; vi: string }) {
@@ -23,7 +23,7 @@ export default function ArtworkMeta({ artwork }: ArtworkMetaProps) {
         <h1 className="font-serif text-3xl sm:text-4xl text-[#f0e6d3] leading-tight">
           {artwork.title}
         </h1>
-        <p className="mt-2 text-[#b0967a] text-lg">{artwork.artist.displayName}</p>
+        <p className="mt-2 text-[#b0967a] text-lg">{artwork.artistName}</p>
         <p className="mt-1 text-[#6b5c4a] text-sm">{artwork.year}</p>
       </div>
 
@@ -54,14 +54,14 @@ export default function ArtworkMeta({ artwork }: ArtworkMetaProps) {
       <div className="border-t border-[#2e2820] pt-6">
         <SectionLabel en="About the Artist" vi="Về Nghệ Sĩ" />
         <p className="text-[#b0967a] text-sm leading-relaxed">
-          {artwork.artist.longBio}
+          {artwork.longBio}
         </p>
       </div>
 
       {/* Copyright */}
       <div className="border-t border-[#2e2820] pt-4">
         <p className="text-xs text-[#6b5c4a]">
-          © {artwork.year} {artwork.artist.displayName}. All rights reserved.
+          © {artwork.year} {artwork.artistName}. All rights reserved.
         </p>
       </div>
 

@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { loadArtworkBySlug, loadAllSlugs } from "@/lib/dataLoader";
+import { getArtworkBySlug, getAllSlugs } from "@/lib/getArtworks";
 import ArtworkDetail from "@/components/artwork/ArtworkDetail";
 
 interface Props {
@@ -7,22 +7,22 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  return loadAllSlugs().map((slug) => ({ slug }));
+  return getAllSlugs().map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
-  const artwork = loadArtworkBySlug(slug);
+  const artwork = getArtworkBySlug(slug);
   if (!artwork) return {};
   return {
-    title: `${artwork.title} — ${artwork.artist.displayName} | Cultural Visions`,
+    title: `${artwork.title} — ${artwork.artistName} | Cultural Visions`,
     description: artwork.artistStatement.slice(0, 160),
   };
 }
 
 export default async function ArtworkPage({ params }: Props) {
   const { slug } = await params;
-  const artwork = loadArtworkBySlug(slug);
+  const artwork = getArtworkBySlug(slug);
 
   if (!artwork) notFound();
 

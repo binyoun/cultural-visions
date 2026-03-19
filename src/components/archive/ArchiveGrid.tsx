@@ -1,8 +1,8 @@
-import type { ArtworkWithArtist } from "@/lib/dataLoader";
+import type { ArtworkMatter } from "@/types/artwork";
 import ArtworkCard from "./ArtworkCard";
 
 interface ArchiveGridProps {
-  artworks: ArtworkWithArtist[];
+  artworks: ArtworkMatter[];
 }
 
 export default function ArchiveGrid({ artworks }: ArchiveGridProps) {
@@ -17,7 +17,7 @@ export default function ArchiveGrid({ artworks }: ArchiveGridProps) {
   return (
     <div className="columns-1 sm:columns-2 lg:columns-3 gap-4">
       {artworks.map((artwork) => (
-        <ArtworkCard key={artwork.id} artwork={artwork} />
+        <ArtworkCard key={artwork.slug} artwork={artwork} />
       ))}
     </div>
   );

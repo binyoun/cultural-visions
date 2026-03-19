@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import type { ArtworkWithArtist } from "@/lib/dataLoader";
+import type { ArtworkMatter } from "@/types/artwork";
 
 interface ArtworkCardProps {
-  artwork: ArtworkWithArtist;
+  artwork: ArtworkMatter;
 }
 
 export default function ArtworkCard({ artwork }: ArtworkCardProps) {
@@ -50,7 +50,7 @@ export default function ArtworkCard({ artwork }: ArtworkCardProps) {
             {artwork.title}
           </h3>
           <p className="text-gray-400 text-xs mt-0.5 tracking-wide">
-            {artwork.artist.displayName}
+            {artwork.artistName}
           </p>
         </div>
       </div>
