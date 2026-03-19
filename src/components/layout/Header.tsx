@@ -9,16 +9,18 @@ export default function Header() {
   const campusLink = (campus: string, label: string) => {
     const href = `/archive/${campus}/`;
     const isActive = pathname.includes(`/archive/${campus}`);
-    const activeColor = campus === "hanoi" ? "#4a8f9e" : "#b85c38";
+    const activeColor = campus === "hanoi" ? "#2a5a6e" : "#8b3520";
     return (
       <Link
         href={href}
         className={`text-sm tracking-widest uppercase transition-colors pb-0.5 ${
-          isActive
-            ? "border-b"
-            : "text-gray-500 hover:text-gray-300"
+          isActive ? "border-b" : "hover:opacity-70"
         }`}
-        style={isActive ? { color: activeColor, borderColor: activeColor } : undefined}
+        style={
+          isActive
+            ? { color: activeColor, borderColor: activeColor }
+            : { color: "#8a6040" }
+        }
       >
         {label}
       </Link>
@@ -28,38 +30,52 @@ export default function Header() {
   const isHonored = pathname === "/honored/";
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[#121212]/80 backdrop-blur-md border-b border-white/5">
+    <header
+      className="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm"
+      style={{
+        backgroundColor: "rgba(242, 228, 192, 0.92)",
+        borderBottom: "2px solid #7a1515",
+      }}
+    >
       <div className="h-14 px-6 lg:px-10 grid grid-cols-3 items-center">
-        {/* Left */}
+        {/* Left — wordmark */}
         <Link href="/" className="flex flex-col leading-tight group">
-          <span className="text-[11px] tracking-[0.2em] uppercase text-[#6b5c4a] group-hover:text-[#b0967a] transition-colors">
+          <span
+            className="text-[11px] tracking-[0.2em] uppercase transition-colors"
+            style={{ color: "#8a6040" }}
+          >
             RMIT University Vietnam
           </span>
-          <span className="text-[11px] tracking-[0.15em] uppercase text-[#6b5c4a] group-hover:text-[#b0967a] transition-colors hidden sm:block">
+          <span
+            className="text-[11px] tracking-[0.15em] uppercase transition-colors hidden sm:block font-serif"
+            style={{ color: "#7a1515" }}
+          >
             Cultural Visions
           </span>
-          <span className="text-[10px] tracking-[0.1em] text-[#6b5c4a]/60 group-hover:text-[#6b5c4a] transition-colors hidden sm:block font-light italic">
+          <span
+            className="text-[10px] tracking-[0.1em] hidden sm:block font-light italic"
+            style={{ color: "#b09070" }}
+          >
             Triển Lãm Ảnh Nghệ Thuật
           </span>
         </Link>
 
-        {/* Center */}
+        {/* Center — campus nav */}
         <div className="flex items-center justify-center gap-6">
           {campusLink("hanoi", "Hanoi")}
-          <span className="text-white/10 text-xs">|</span>
+          <span style={{ color: "rgba(122,21,21,0.25)" }} className="text-xs">|</span>
           {campusLink("saigon", "Saigon")}
         </div>
 
-        {/* Right */}
+        {/* Right — search + honored */}
         <div className="flex items-center justify-end gap-4">
-          {/* Search icon */}
           <button
             aria-label="Search"
-            className="text-[#6b5c4a] hover:text-[#b0967a] transition-colors"
+            className="transition-colors"
+            style={{ color: "#8a6040" }}
           >
             <svg
-              width="16"
-              height="16"
+              width="16" height="16"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -72,21 +88,24 @@ export default function Header() {
             </svg>
           </button>
 
-          {/* Honored Works pill */}
           <Link
             href="/honored/"
-            className={`text-xs font-medium px-5 py-2 rounded-full border transition-colors ${
+            className="text-xs font-medium px-4 py-1.5 transition-colors"
+            style={
               isHonored
-                ? "bg-[#c9a84c] text-[#121212] border-[#c9a84c]"
-                : "border-[#c9a84c]/40 text-[#c9a84c]/70 hover:border-[#c9a84c] hover:text-[#c9a84c]"
-            }`}
+                ? {
+                    backgroundColor: "#7a1515",
+                    color: "#f2e4c0",
+                    border: "1px solid #7a1515",
+                  }
+                : {
+                    backgroundColor: "transparent",
+                    color: "#7a1515",
+                    border: "1px solid rgba(122,21,21,0.5)",
+                  }
+            }
           >
-            <span
-              className="text-[#c9a84c]"
-              style={{ textShadow: "0 0 6px #c9a84c, 0 0 14px rgba(201,168,76,0.5)" }}
-            >
-              ★
-            </span>{" "}
+            <span style={{ color: isHonored ? "#f2e4c0" : "#7a1515" }}>★</span>{" "}
             Honored Works
           </Link>
         </div>

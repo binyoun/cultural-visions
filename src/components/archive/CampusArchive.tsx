@@ -39,16 +39,25 @@ export default function CampusArchive({
 
   return (
     <>
-      <div className="pt-24 pb-6 px-6 lg:px-10 border-b border-white/5">
-        <p className="text-[10px] tracking-[0.3em] uppercase text-[#6b5c4a] mb-0.5">
+      <div
+        className="pt-24 pb-6 px-6 lg:px-10"
+        style={{ borderBottom: "1px solid rgba(122,21,21,0.2)" }}
+      >
+        <p
+          className="text-[10px] tracking-[0.3em] uppercase mb-0.5"
+          style={{ color: "#8a6040" }}
+        >
           Campus Archive
         </p>
-        <p className="text-[9px] tracking-[0.15em] text-[#6b5c4a]/60 italic mb-2">
+        <p
+          className="text-[9px] tracking-[0.15em] italic mb-2"
+          style={{ color: "#b09070" }}
+        >
           Kho Lưu Trữ Sinh Viên
         </p>
         <h1
-          className="font-sans font-light text-3xl tracking-[0.25em] uppercase"
-          style={{ color: campusLabel === "Hanoi" ? "#4a8f9e" : "#b85c38" }}
+          className="font-serif font-normal text-3xl tracking-[0.25em] uppercase"
+          style={{ color: campusLabel === "Hanoi" ? "#2a5a6e" : "#8b3520" }}
         >
           {campusLabel}
         </h1>

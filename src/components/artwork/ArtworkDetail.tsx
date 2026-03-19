@@ -12,12 +12,21 @@ export default function ArtworkDetail({ artwork }: ArtworkDetailProps) {
       {/* Mobile: stacked. Desktop: 60/40 grid */}
       <div className="lg:grid lg:grid-cols-[60fr_40fr] lg:min-h-screen">
         {/* Image panel — sticky on desktop */}
-        <div className="lg:sticky lg:top-16 lg:h-[calc(100vh-4rem)] bg-[#0a0a0a] flex items-center justify-center overflow-hidden p-4 lg:p-8">
+        <div
+          className="lg:sticky lg:top-16 lg:h-[calc(100vh-4rem)] flex items-center justify-center overflow-hidden p-4 lg:p-8"
+          style={{ backgroundColor: "#f5eedc" }}
+        >
           <ArtworkImage artwork={artwork} />
         </div>
 
         {/* Meta panel — scrollable */}
-        <div className="bg-[#1a1612] border-l border-[#2e2820] p-6 lg:p-10 overflow-y-auto">
+        <div
+          className="p-6 lg:p-10 overflow-y-auto"
+          style={{
+            backgroundColor: "#e8d4a0",
+            borderLeft: "1px solid rgba(122,21,21,0.2)",
+          }}
+        >
           <ArtworkMeta artwork={artwork} />
         </div>
       </div>

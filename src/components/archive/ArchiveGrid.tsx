@@ -9,7 +9,7 @@ export default function ArchiveGrid({ artworks }: ArchiveGridProps) {
   if (artworks.length === 0) {
     return (
       <div className="py-24 text-center">
-        <p className="text-[#6b6b6b] text-lg">No works match the selected filters.</p>
+        <p className="text-lg" style={{ color: "#8a6040" }}>No works match the selected filters.</p>
       </div>
     );
   }

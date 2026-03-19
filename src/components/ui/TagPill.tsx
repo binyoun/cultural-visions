@@ -10,15 +10,22 @@ export default function TagPill({ label, active = false, onClick }: TagPillProps
   return (
     <button
       onClick={onClick}
-      className={`
-        inline-flex items-center px-3 py-1 rounded-full text-xs font-medium
-        border transition-all duration-200 cursor-pointer
-        ${
-          active
-            ? "bg-[#c9a84c] border-[#c9a84c] text-[#121212]"
-            : "bg-transparent border-[#2a2a2a] text-[#9ca3af] hover:border-[#c9a84c] hover:text-[#c9a84c]"
-        }
-      `}
+      className="inline-flex items-center px-3 py-0.5 text-xs tracking-wider uppercase transition-all duration-200 cursor-pointer"
+      style={
+        active
+          ? {
+              backgroundColor: "#7a1515",
+              color: "#f2e4c0",
+              border: "1px solid #7a1515",
+              fontFamily: "'DM Serif Display', serif",
+            }
+          : {
+              backgroundColor: "transparent",
+              color: "#8a6040",
+              border: "1px solid rgba(122,21,21,0.35)",
+              fontFamily: "'DM Serif Display', serif",
+            }
+      }
     >
       {label}
     </button>

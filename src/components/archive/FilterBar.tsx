@@ -23,7 +23,13 @@ export default function FilterBar({
   total,
 }: FilterBarProps) {
   return (
-    <div className="sticky top-14 z-40 bg-[#121212]/90 backdrop-blur-sm border-b border-white/5 py-3">
+    <div
+      className="sticky top-14 z-40 backdrop-blur-sm py-3"
+      style={{
+        backgroundColor: "rgba(232, 212, 160, 0.95)",
+        borderBottom: "1px solid rgba(122,21,21,0.25)",
+      }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row sm:items-center gap-3">
           {/* Tags */}
@@ -40,13 +46,19 @@ export default function FilterBar({
 
           {/* Sort + Count */}
           <div className="flex items-center gap-4 shrink-0">
-            <span className="text-xs text-[#6b5c4a]">
+            <span className="text-xs" style={{ color: "#8a6040" }}>
               Showing {count} of {total} works
             </span>
             <select
               value={sort}
               onChange={(e) => onSortChange(e.target.value as SortOption)}
-              className="bg-[#1a1612] border border-[#2e2820] text-[#b0967a] text-xs rounded px-2 py-1 focus:outline-none focus:border-[#c9a84c]"
+              className="text-xs px-2 py-1 focus:outline-none"
+              style={{
+                backgroundColor: "#f2e4c0",
+                border: "1px solid rgba(122,21,21,0.4)",
+                color: "#4a2c1a",
+                fontFamily: "'DM Serif Display', serif",
+              }}
             >
               <option value="year-desc">Year: Newest</option>
               <option value="year-asc">Year: Oldest</option>

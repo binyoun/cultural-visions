@@ -1,17 +1,29 @@
 export default function HonoredHero() {
   return (
-    <div className="py-16 sm:py-24 border-b border-[#2e2820]">
+    <div
+      className="py-16 sm:py-24"
+      style={{ borderBottom: "1px solid rgba(122,21,21,0.2)" }}
+    >
       <div className="max-w-3xl">
-        <p className="text-xs uppercase tracking-widest text-[#c9a84c] mb-4">
+        <p
+          className="text-xs uppercase tracking-widest mb-4"
+          style={{ color: "#7a1515" }}
+        >
           Curatorial Selection
         </p>
-        <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-[#f0e6d3] leading-tight">
+        <h1
+          className="font-serif text-4xl sm:text-5xl lg:text-6xl leading-tight"
+          style={{ color: "#1a0a05" }}
+        >
           Honored Works
         </h1>
-        <p className="mt-1 font-serif text-lg text-[#b0967a]/60 italic">
+        <p
+          className="mt-1 font-serif text-lg italic"
+          style={{ color: "#b09070" }}
+        >
           Tác Phẩm Vinh Danh
         </p>
-        <p className="mt-5 text-[#b0967a] text-lg leading-relaxed">
+        <p className="mt-5 text-lg leading-relaxed" style={{ color: "#4a2c1a" }}>
           These works have been selected by the Cultural Visions curatorial panel as
           outstanding examples of student photography that embody the spirit of Vietnamese
           culture, artistic excellence, and compelling visual storytelling. They are

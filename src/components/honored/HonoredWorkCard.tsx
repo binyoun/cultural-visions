@@ -14,7 +14,10 @@ export default function HonoredWorkCard({ artwork, index }: HonoredWorkCardProps
   const isEven = index % 2 === 0;
 
   return (
-    <article className="py-16 sm:py-24 border-b border-[#2a2a2a] last:border-0">
+    <article
+      className="py-16 sm:py-24 last:border-0"
+      style={{ borderBottom: "1px solid rgba(122,21,21,0.15)" }}
+    >
       <div
         className={`grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start ${
           isEven ? "" : "lg:[&>*:first-child]:order-2"
@@ -51,14 +54,24 @@ export default function HonoredWorkCard({ artwork, index }: HonoredWorkCardProps
         {/* Meta */}
         <div className="space-y-6 lg:py-4">
           <div>
-            <p className="text-xs uppercase tracking-widest text-[#c9a84c] mb-2">
+            <p
+              className="text-xs uppercase tracking-widest mb-2"
+              style={{ color: "#7a1515" }}
+            >
               Honored Work
             </p>
-            <h2 className="font-serif text-3xl sm:text-4xl text-[#e5e5e5] leading-tight">
+            <h2
+              className="font-serif text-3xl sm:text-4xl leading-tight"
+              style={{ color: "#1a0a05" }}
+            >
               {artwork.title}
             </h2>
-            <p className="mt-2 text-[#9ca3af] text-lg">{artwork.artistName}</p>
-            <p className="text-[#6b6b6b] text-sm mt-1">{artwork.year}</p>
+            <p className="mt-2 text-lg" style={{ color: "#4a2c1a" }}>
+              {artwork.artistName}
+            </p>
+            <p className="text-sm mt-1" style={{ color: "#8a6040" }}>
+              {artwork.year}
+            </p>
           </div>
 
           <div className="flex flex-wrap gap-2">
@@ -68,32 +81,42 @@ export default function HonoredWorkCard({ artwork, index }: HonoredWorkCardProps
           </div>
 
           <div>
-            <h3 className="text-xs uppercase tracking-widest text-[#6b6b6b] mb-3">
+            <h3
+              className="text-xs uppercase tracking-widest mb-3"
+              style={{ color: "#7a1515" }}
+            >
               Artist Statement
             </h3>
-            <p className="text-[#9ca3af] text-sm leading-relaxed">
+            <p className="text-sm leading-relaxed" style={{ color: "#4a2c1a" }}>
               {artwork.artistStatement}
             </p>
           </div>
 
           <div>
-            <h3 className="text-xs uppercase tracking-widest text-[#6b6b6b] mb-3">
+            <h3
+              className="text-xs uppercase tracking-widest mb-3"
+              style={{ color: "#7a1515" }}
+            >
               Curator&#39;s Note
             </h3>
-            <p className="text-[#9ca3af] text-sm leading-relaxed italic">
+            <p
+              className="text-sm leading-relaxed italic"
+              style={{ color: "#4a2c1a" }}
+            >
               {artwork.curatorNote}
             </p>
           </div>
 
           <div className="pt-2">
-            <p className="text-xs text-[#6b6b6b]">
+            <p className="text-xs" style={{ color: "#8a6040" }}>
               © {artwork.year} {artwork.artistName}. All rights reserved.
             </p>
           </div>
 
           <Link
             href={`/artwork/${artwork.slug}/`}
-            className="inline-flex items-center gap-2 text-sm text-[#c9a84c] hover:underline"
+            className="inline-flex items-center gap-2 text-sm hover:underline"
+            style={{ color: "#7a1515" }}
           >
             View full detail →
           </Link>

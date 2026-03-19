@@ -28,7 +28,10 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="bg-[#121212] text-[#e5e5e5] min-h-screen flex flex-col">
+      <body
+        className="min-h-screen flex flex-col"
+        style={{ backgroundColor: "#f2e4c0", color: "#1a0a05" }}
+      >
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

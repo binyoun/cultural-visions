@@ -1,27 +1,59 @@
 @import "tailwindcss";
 
 :root {
-  --gallery-bg: #121212;
-  --gallery-surface: #1a1612;
-  --gallery-border: #2e2820;
-  --gallery-muted: #6b5c4a;
-  --gallery-secondary: #b0967a;
-  --gallery-primary: #f0e6d3;
-  --gallery-accent: #c9a84c;
-  --campus-hanoi: #4a8f9e;
-  --campus-saigon: #b85c38;
+  --parchment:        #f2e4c0;
+  --parchment-deep:   #e8d4a0;
+  --parchment-aged:   #d4bc80;
+  --lacquer:          #7a1515;
+  --lacquer-light:    #9b2020;
+  --seal:             #b82020;
+  --ink:              #1a0a05;
+  --ink-secondary:    #4a2c1a;
+  --ink-muted:        #8a6040;
+  --ink-ghost:        #b09070;
+  --gold:             #9a7010;
+  --gold-light:       #c9a84c;
+  --campus-hanoi:     #2a5a6e;
+  --campus-saigon:    #8b3520;
+
+  /* Legacy aliases kept for any remaining references */
+  --gallery-bg:        var(--parchment);
+  --gallery-surface:   var(--parchment-deep);
+  --gallery-border:    var(--lacquer);
+  --gallery-muted:     var(--ink-muted);
+  --gallery-secondary: var(--ink-secondary);
+  --gallery-primary:   var(--ink);
+  --gallery-accent:    var(--seal);
 }
 
 html {
-  background-color: var(--gallery-bg);
-  color: var(--gallery-primary);
+  background-color: var(--parchment);
+  color: var(--ink);
 }
 
 body {
   min-height: 100vh;
-  background-color: #121212;
-  color: #f0e6d3;
-  font-family: Inter, "DM Sans", sans-serif;
+  background-color: var(--parchment);
+  background-image:
+    radial-gradient(ellipse at 20% 40%, rgba(160, 110, 40, 0.2) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(180, 130, 50, 0.15) 0%, transparent 55%),
+    radial-gradient(ellipse at 55% 80%, rgba(140, 100, 30, 0.12) 0%, transparent 50%),
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 3px,
+      rgba(120, 80, 20, 0.018) 3px,
+      rgba(120, 80, 20, 0.018) 4px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 3px,
+      rgba(120, 80, 20, 0.012) 3px,
+      rgba(120, 80, 20, 0.012) 4px
+    );
+  color: var(--ink);
+  font-family: "DM Sans", sans-serif;
 }
 
 * {
@@ -29,8 +61,8 @@ body {
 }
 
 ::selection {
-  background-color: #c9a84c;
-  color: #121212;
+  background-color: var(--lacquer);
+  color: var(--parchment);
 }
 
 img {
@@ -38,7 +70,7 @@ img {
   -webkit-user-drag: none;
 }
 
-@keyframes map-pulse {
-  0%, 100% { opacity: 0.6; r: 5; }
-  50% { opacity: 1; r: 7; }
+@keyframes seal-pulse {
+  0%, 100% { opacity: 0.85; }
+  50%       { opacity: 1; }
 }

@@ -42,14 +42,14 @@ export default function ArtworkCard({ artwork }: ArtworkCardProps) {
           className="absolute inset-0 z-20 flex flex-col justify-end p-4 translate-y-full group-hover:translate-y-0"
           style={{
             background:
-              "linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.3) 50%, transparent 100%)",
+              "linear-gradient(to top, rgba(26,10,5,0.92) 0%, rgba(26,10,5,0.35) 55%, transparent 100%)",
             transition: "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
           }}
         >
-          <h3 className="font-serif text-white text-base leading-snug">
+          <h3 className="font-serif text-base leading-snug" style={{ color: "#f2e4c0" }}>
             {artwork.title}
           </h3>
-          <p className="text-gray-400 text-xs mt-0.5 tracking-wide">
+          <p className="text-xs mt-0.5 tracking-wide" style={{ color: "#b09070" }}>
             {artwork.artistName}
           </p>
         </div>
