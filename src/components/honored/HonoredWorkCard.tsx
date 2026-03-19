@@ -62,14 +62,14 @@ export default function HonoredWorkCard({ artwork, index }: HonoredWorkCardProps
             </p>
             <h2
               className="font-serif text-3xl sm:text-4xl leading-tight"
-              style={{ color: "#1a0a05" }}
+              style={{ color: "#f2e4c0" }}
             >
               {artwork.title}
             </h2>
-            <p className="mt-2 text-lg" style={{ color: "#4a2c1a" }}>
+            <p className="mt-2 text-lg" style={{ color: "#c4a480" }}>
               {artwork.artistName}
             </p>
-            <p className="text-sm mt-1" style={{ color: "#8a6040" }}>
+            <p className="text-sm mt-1" style={{ color: "#6a4a30" }}>
               {artwork.year}
             </p>
           </div>
@@ -87,7 +87,7 @@ export default function HonoredWorkCard({ artwork, index }: HonoredWorkCardProps
             >
               Artist Statement
             </h3>
-            <p className="text-sm leading-relaxed" style={{ color: "#4a2c1a" }}>
+            <p className="text-sm leading-relaxed" style={{ color: "#b09070" }}>
               {artwork.artistStatement}
             </p>
           </div>
@@ -101,14 +101,14 @@ export default function HonoredWorkCard({ artwork, index }: HonoredWorkCardProps
             </h3>
             <p
               className="text-sm leading-relaxed italic"
-              style={{ color: "#4a2c1a" }}
+              style={{ color: "#8a6040" }}
             >
               {artwork.curatorNote}
             </p>
           </div>
 
           <div className="pt-2">
-            <p className="text-xs" style={{ color: "#8a6040" }}>
+            <p className="text-xs" style={{ color: "#4a2c1a" }}>
               © {artwork.year} {artwork.artistName}. All rights reserved.
             </p>
           </div>

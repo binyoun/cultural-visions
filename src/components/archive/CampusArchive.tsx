@@ -41,23 +41,23 @@ export default function CampusArchive({
     <>
       <div
         className="pt-24 pb-6 px-6 lg:px-10"
-        style={{ borderBottom: "1px solid rgba(122,21,21,0.2)" }}
+        style={{ borderBottom: "1px solid rgba(122,21,21,0.18)" }}
       >
         <p
           className="text-[10px] tracking-[0.3em] uppercase mb-0.5"
-          style={{ color: "#8a6040" }}
+          style={{ color: "#6a4a30" }}
         >
           Campus Archive
         </p>
         <p
           className="text-[9px] tracking-[0.15em] italic mb-2"
-          style={{ color: "#b09070" }}
+          style={{ color: "#4a2c1a" }}
         >
           Kho Lưu Trữ Sinh Viên
         </p>
         <h1
           className="font-serif font-normal text-3xl tracking-[0.25em] uppercase"
-          style={{ color: campusLabel === "Hanoi" ? "#2a5a6e" : "#8b3520" }}
+          style={{ color: campusLabel === "Hanoi" ? "#4a9ab8" : "#c05030" }}
         >
           {campusLabel}
         </h1>

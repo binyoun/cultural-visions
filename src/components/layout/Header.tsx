@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 
 export default function Header() {
   const pathname = usePathname();
-  if (pathname === "/") return null;
+  if (pathname === "/" || pathname === "/choose/") return null;
 
   const campusLink = (campus: string, label: string) => {
     const href = `/archive/${campus}/`;
@@ -34,8 +34,8 @@ export default function Header() {
     <header
       className="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm"
       style={{
-        backgroundColor: "rgba(242, 228, 192, 0.92)",
-        borderBottom: "2px solid #7a1515",
+        backgroundColor: "rgba(15, 13, 11, 0.94)",
+        borderBottom: "1px solid rgba(122,21,21,0.35)",
       }}
     >
       <div className="h-14 px-6 lg:px-10 grid grid-cols-3 items-center">
@@ -43,19 +43,19 @@ export default function Header() {
         <Link href="/" className="flex flex-col leading-tight group">
           <span
             className="text-[11px] tracking-[0.2em] uppercase transition-colors"
-            style={{ color: "#8a6040" }}
+            style={{ color: "#6a4a30" }}
           >
             RMIT University Vietnam
           </span>
           <span
             className="text-[11px] tracking-[0.15em] uppercase transition-colors hidden sm:block font-serif"
-            style={{ color: "#7a1515" }}
+            style={{ color: "#c4906a" }}
           >
             Cultural Visions
           </span>
           <span
             className="text-[10px] tracking-[0.1em] hidden sm:block font-light italic"
-            style={{ color: "#b09070" }}
+            style={{ color: "#6a4a30" }}
           >
             Triển Lãm Ảnh Nghệ Thuật
           </span>
@@ -73,7 +73,7 @@ export default function Header() {
           <button
             aria-label="Search"
             className="transition-colors"
-            style={{ color: "#8a6040" }}
+            style={{ color: "#7a5535" }}
           >
             <svg
               width="16" height="16"

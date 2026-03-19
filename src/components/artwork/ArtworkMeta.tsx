@@ -32,11 +32,11 @@ export default function ArtworkMeta({ artwork }: ArtworkMetaProps) {
       <div>
         <h1
           className="font-serif text-3xl sm:text-4xl leading-tight"
-          style={{ color: "#1a0a05" }}
+          style={{ color: "#f2e4c0" }}
         >
           {artwork.title}
         </h1>
-        <p className="mt-2 text-lg" style={{ color: "#4a2c1a" }}>
+        <p className="mt-2 text-lg" style={{ color: "#c4a480" }}>
           {artwork.artistName}
         </p>
         <p className="mt-1 text-sm" style={{ color: "#8a6040" }}>
@@ -54,7 +54,7 @@ export default function ArtworkMeta({ artwork }: ArtworkMetaProps) {
       {/* Artist Statement */}
       <div>
         <SectionLabel en="Artist Statement" vi="Tuyên Bố Nghệ Sĩ" />
-        <p className="text-sm leading-relaxed" style={{ color: "#4a2c1a" }}>
+        <p className="text-sm leading-relaxed" style={{ color: "#b09070" }}>
           {artwork.artistStatement}
         </p>
       </div>
@@ -64,7 +64,7 @@ export default function ArtworkMeta({ artwork }: ArtworkMetaProps) {
         <SectionLabel en="Curator's Note" vi="Ghi Chú Giám Tuyển" />
         <p
           className="text-sm leading-relaxed italic"
-          style={{ color: "#4a2c1a" }}
+          style={{ color: "#8a6040" }}
         >
           {artwork.curatorNote}
         </p>
@@ -73,10 +73,10 @@ export default function ArtworkMeta({ artwork }: ArtworkMetaProps) {
       {/* Artist Bio */}
       <div
         className="pt-6"
-        style={{ borderTop: "1px solid rgba(122,21,21,0.2)" }}
+        style={{ borderTop: "1px solid rgba(122,21,21,0.15)" }}
       >
         <SectionLabel en="About the Artist" vi="Về Nghệ Sĩ" />
-        <p className="text-sm leading-relaxed" style={{ color: "#4a2c1a" }}>
+        <p className="text-sm leading-relaxed" style={{ color: "#b09070" }}>
           {artwork.longBio}
         </p>
       </div>
@@ -84,9 +84,9 @@ export default function ArtworkMeta({ artwork }: ArtworkMetaProps) {
       {/* Copyright */}
       <div
         className="pt-4"
-        style={{ borderTop: "1px solid rgba(122,21,21,0.2)" }}
+        style={{ borderTop: "1px solid rgba(122,21,21,0.15)" }}
       >
-        <p className="text-xs" style={{ color: "#8a6040" }}>
+        <p className="text-xs" style={{ color: "#4a2c1a" }}>
           © {artwork.year} {artwork.artistName}. All rights reserved.
         </p>
       </div>

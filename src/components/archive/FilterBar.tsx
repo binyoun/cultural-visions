@@ -26,7 +26,7 @@ export default function FilterBar({
     <div
       className="sticky top-14 z-40 backdrop-blur-sm py-3"
       style={{
-        backgroundColor: "rgba(232, 212, 160, 0.95)",
+        backgroundColor: "rgba(15, 13, 11, 0.96)",
         borderBottom: "1px solid rgba(122,21,21,0.25)",
       }}
     >
@@ -46,7 +46,7 @@ export default function FilterBar({
 
           {/* Sort + Count */}
           <div className="flex items-center gap-4 shrink-0">
-            <span className="text-xs" style={{ color: "#8a6040" }}>
+            <span className="text-xs" style={{ color: "#6a4a30" }}>
               Showing {count} of {total} works
             </span>
             <select
@@ -54,9 +54,9 @@ export default function FilterBar({
               onChange={(e) => onSortChange(e.target.value as SortOption)}
               className="text-xs px-2 py-1 focus:outline-none"
               style={{
-                backgroundColor: "#f2e4c0",
+                backgroundColor: "#1a1410",
                 border: "1px solid rgba(122,21,21,0.4)",
-                color: "#4a2c1a",
+                color: "#b09070",
                 fontFamily: "'DM Serif Display', serif",
               }}
             >

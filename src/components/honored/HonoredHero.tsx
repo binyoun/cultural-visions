@@ -13,17 +13,17 @@ export default function HonoredHero() {
         </p>
         <h1
           className="font-serif text-4xl sm:text-5xl lg:text-6xl leading-tight"
-          style={{ color: "#1a0a05" }}
+          style={{ color: "#f2e4c0" }}
         >
           Honored Works
         </h1>
         <p
           className="mt-1 font-serif text-lg italic"
-          style={{ color: "#b09070" }}
+          style={{ color: "#6a4a30" }}
         >
           Tác Phẩm Vinh Danh
         </p>
-        <p className="mt-5 text-lg leading-relaxed" style={{ color: "#4a2c1a" }}>
+        <p className="mt-5 text-lg leading-relaxed" style={{ color: "#b09070" }}>
           These works have been selected by the Cultural Visions curatorial panel as
           outstanding examples of student photography that embody the spirit of Vietnamese
           culture, artistic excellence, and compelling visual storytelling. They are

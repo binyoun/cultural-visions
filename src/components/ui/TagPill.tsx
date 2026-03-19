@@ -21,7 +21,7 @@ export default function TagPill({ label, active = false, onClick }: TagPillProps
             }
           : {
               backgroundColor: "transparent",
-              color: "#8a6040",
+              color: "#7a5535",
               border: "1px solid rgba(122,21,21,0.35)",
               fontFamily: "'DM Serif Display', serif",
             }
