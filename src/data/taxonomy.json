@@ -1,0 +1,10 @@
+{
+  "tags": [
+    { "id": "heritage", "label": "#Heritage", "description": "Works exploring Vietnamese cultural heritage and tradition" },
+    { "id": "urbanization", "label": "#Urbanization", "description": "Works engaging with rapid urban development and change" },
+    { "id": "daily-life", "label": "#DailyLife", "description": "Intimate observation of everyday Vietnamese life" },
+    { "id": "nature", "label": "#Nature", "description": "Natural environments, flora, and the non-human world" },
+    { "id": "community", "label": "#Community", "description": "Communal gatherings, festivals, and shared spaces" },
+    { "id": "infrastructure", "label": "#Infrastructure", "description": "The built environment, systems, and urban infrastructure" }
+  ]
+}
