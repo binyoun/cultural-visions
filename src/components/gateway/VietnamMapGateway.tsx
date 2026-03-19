@@ -204,25 +204,26 @@ export default function VietnamMapGateway() {
           filter: "drop-shadow(0 20px 60px rgba(122,21,21,0.18)) drop-shadow(0 4px 16px rgba(0,0,0,0.12))",
         }}
       >
-        {/* The reference image */}
-        <Image
-          src="/gateway-card.png"
-          alt="Cultural Visions — Vietnam Map"
-          width={2752}
-          height={1536}
-          priority
-          draggable={false}
-          onContextMenu={(e) => e.preventDefault()}
-          onDragStart={(e) => e.preventDefault()}
+        {/* The reference image — fill inside aspect-ratio container */}
+        <div
           style={{
-            display: "block",
-            width: "auto",
-            height: "auto",
-            maxWidth: "min(90vw, 1560px)",
-            maxHeight: "84vh",
-            userSelect: "none",
+            position: "relative",
+            /* Width = min(90vw, height-that-fills-84vh) to respect both axes */
+            width: "min(90vw, calc(84vh * 2752 / 1536))",
+            aspectRatio: "2752 / 1536",
           }}
-        />
+        >
+          <Image
+            src="/gateway-card.png"
+            alt="Cultural Visions — Vietnam Map"
+            fill
+            priority
+            draggable={false}
+            onContextMenu={(e) => e.preventDefault()}
+            onDragStart={(e) => e.preventDefault()}
+            style={{ objectFit: "contain", userSelect: "none" }}
+          />
+        </div>
 
         {/* ── Hanoi hotspot — upper-center of envelope ── */}
         <div
