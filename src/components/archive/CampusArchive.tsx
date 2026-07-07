@@ -41,23 +41,39 @@ export default function CampusArchive({
     <>
       <div
         className="pt-24 pb-6 px-6 lg:px-10"
-        style={{ borderBottom: "1px solid rgba(122,21,21,0.18)" }}
+        style={{ borderBottom: "1px solid var(--line)" }}
       >
         <p
-          className="text-[10px] tracking-[0.3em] uppercase mb-0.5"
-          style={{ color: "#6a4a30" }}
+          className="flex items-center gap-2.5 text-[10px] tracking-[0.3em] uppercase mb-0.5"
+          style={{ fontFamily: "var(--mono)", color: "var(--text-dim)" }}
         >
+          <span
+            aria-hidden
+            style={{
+              width: "26px",
+              height: "1px",
+              background: "var(--line)",
+              display: "inline-block",
+            }}
+          />
           Campus Archive
         </p>
         <p
           className="text-[9px] tracking-[0.15em] italic mb-2"
-          style={{ color: "#4a2c1a" }}
+          style={{ fontFamily: "var(--mono)", color: "var(--text-dim)", opacity: 0.7 }}
         >
           Kho Lưu Trữ Sinh Viên
         </p>
         <h1
-          className="font-serif font-normal text-3xl tracking-[0.25em] uppercase"
-          style={{ color: campusLabel === "Hanoi" ? "#4a9ab8" : "#c05030" }}
+          className="font-normal text-3xl tracking-[0.25em] uppercase"
+          style={{
+            fontFamily: "var(--serif)",
+            color:
+              campusLabel === "Hanoi"
+                ? "var(--campus-hanoi)"
+                : "var(--campus-saigon)",
+            textShadow: "var(--backlit)",
+          }}
         >
           {campusLabel}
         </h1>

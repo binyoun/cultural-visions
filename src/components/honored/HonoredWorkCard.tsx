@@ -10,13 +10,21 @@ interface HonoredWorkCardProps {
   index: number;
 }
 
+const monoLabel: React.CSSProperties = {
+  fontFamily: "var(--mono)",
+  fontSize: "0.62rem",
+  letterSpacing: "0.22em",
+  textTransform: "uppercase",
+  color: "var(--accent)",
+};
+
 export default function HonoredWorkCard({ artwork, index }: HonoredWorkCardProps) {
   const isEven = index % 2 === 0;
 
   return (
     <article
       className="py-16 sm:py-24 last:border-0"
-      style={{ borderBottom: "1px solid rgba(122,21,21,0.15)" }}
+      style={{ borderBottom: "1px solid var(--line-soft)" }}
     >
       <div
         className={`grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start ${
@@ -26,7 +34,12 @@ export default function HonoredWorkCard({ artwork, index }: HonoredWorkCardProps
         {/* Image */}
         <Link
           href={`/artwork/${artwork.slug}/`}
-          className="block group relative overflow-hidden rounded-sm"
+          className="block group relative overflow-hidden"
+          style={{
+            borderRadius: "10px",
+            border: "1px solid var(--line)",
+            boxShadow: "0 18px 44px rgba(0,0,0,0.5), 0 0 24px rgba(216,170,120,0.07)",
+          }}
         >
           <div
             className="relative w-full"
@@ -54,22 +67,26 @@ export default function HonoredWorkCard({ artwork, index }: HonoredWorkCardProps
         {/* Meta */}
         <div className="space-y-6 lg:py-4">
           <div>
-            <p
-              className="text-xs uppercase tracking-widest mb-2"
-              style={{ color: "#7a1515" }}
-            >
+            <p className="mb-2" style={monoLabel}>
               Honored Work
             </p>
             <h2
-              className="font-serif text-3xl sm:text-4xl leading-tight"
-              style={{ color: "#f2e4c0" }}
+              className="text-3xl sm:text-4xl leading-tight"
+              style={{ fontFamily: "var(--serif)", color: "var(--text-bright)" }}
             >
               {artwork.title}
             </h2>
-            <p className="mt-2 text-lg" style={{ color: "#c4a480" }}>
+            <p className="mt-2 text-lg" style={{ color: "var(--text)" }}>
               {artwork.artistName}
             </p>
-            <p className="text-sm mt-1" style={{ color: "#6a4a30" }}>
+            <p
+              className="mt-1"
+              style={{
+                fontFamily: "var(--mono)",
+                fontSize: "0.72rem",
+                color: "var(--text-dim)",
+              }}
+            >
               {artwork.year}
             </p>
           </div>
@@ -81,42 +98,49 @@ export default function HonoredWorkCard({ artwork, index }: HonoredWorkCardProps
           </div>
 
           <div>
-            <h3
-              className="text-xs uppercase tracking-widest mb-3"
-              style={{ color: "#7a1515" }}
-            >
+            <h3 className="mb-3" style={monoLabel}>
               Artist Statement
             </h3>
-            <p className="text-sm leading-relaxed" style={{ color: "#b09070" }}>
+            <p className="text-sm leading-relaxed" style={{ color: "var(--text)" }}>
               {artwork.artistStatement}
             </p>
           </div>
 
           <div>
-            <h3
-              className="text-xs uppercase tracking-widest mb-3"
-              style={{ color: "#7a1515" }}
-            >
+            <h3 className="mb-3" style={monoLabel}>
               Curator&#39;s Note
             </h3>
             <p
-              className="text-sm leading-relaxed italic"
-              style={{ color: "#8a6040" }}
+              className="text-base leading-relaxed italic"
+              style={{ fontFamily: "var(--serif)", color: "var(--text)" }}
             >
               {artwork.curatorNote}
             </p>
           </div>
 
           <div className="pt-2">
-            <p className="text-xs" style={{ color: "#4a2c1a" }}>
+            <p
+              style={{
+                fontFamily: "var(--mono)",
+                fontSize: "0.62rem",
+                color: "var(--text-dim)",
+              }}
+            >
               © {artwork.year} {artwork.artistName}. All rights reserved.
             </p>
           </div>
 
           <Link
             href={`/artwork/${artwork.slug}/`}
-            className="inline-flex items-center gap-2 text-sm hover:underline"
-            style={{ color: "#7a1515" }}
+            className="nav-link inline-flex items-center gap-2 uppercase"
+            style={{
+              fontFamily: "var(--mono)",
+              fontSize: "0.72rem",
+              letterSpacing: "0.08em",
+              color: "var(--accent)",
+              textDecoration: "none",
+              transition: "color 0.2s",
+            }}
           >
             View full detail →
           </Link>

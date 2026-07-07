@@ -30,7 +30,7 @@ export default function ChoosePage() {
         inset: 0,
         cursor: "crosshair",
         overflow: "hidden",
-        fontFamily: "'DM Serif Display', serif",
+        fontFamily: "var(--serif)",
       }}
     >
       {/* ── Hanoi — left panel ────────────────────────────────── */}
@@ -43,8 +43,8 @@ export default function ChoosePage() {
           inset: 0,
           width: `${divide}%`,
           background: `
-            radial-gradient(ellipse at 30% 50%, rgba(42,90,110,0.9) 0%, rgba(18,35,45,0.98) 70%),
-            radial-gradient(ellipse at 70% 20%, rgba(55,110,140,0.4) 0%, transparent 50%)
+            radial-gradient(ellipse at 30% 50%, rgba(52, 78, 104, 0.9) 0%, rgba(8, 11, 15, 0.98) 70%),
+            radial-gradient(ellipse at 70% 20%, rgba(124, 156, 186, 0.28) 0%, transparent 50%)
           `,
           cursor: "pointer",
           transition: "width 0.15s ease",
@@ -79,7 +79,7 @@ export default function ChoosePage() {
           <div
             style={{
               fontSize: "clamp(60px, 10vw, 130px)",
-              color: "#2a5a6e",
+              color: "var(--accent2)",
               opacity: hanoiHovered ? 0.15 : 0.08,
               lineHeight: 1,
               transition: "opacity 0.5s ease",
@@ -94,8 +94,8 @@ export default function ChoosePage() {
             style={{
               fontSize: "clamp(9px, 1vw, 12px)",
               letterSpacing: "0.4em",
-              color: "rgba(180,220,235,0.45)",
-              fontFamily: "'Courier New', monospace",
+              color: "rgba(174, 198, 220, 0.5)",
+              fontFamily: "var(--mono)",
               transition: "opacity 0.4s",
               opacity: hanoiHovered ? 1 : 0.55,
             }}
@@ -107,11 +107,12 @@ export default function ChoosePage() {
             style={{
               fontSize: "clamp(36px, 5vw, 68px)",
               letterSpacing: "0.18em",
-              color: "#b4dce8",
+              color: "#b9cfe3",
               lineHeight: 1,
               opacity: hanoiHovered ? 1 : 0.65,
               transition: "opacity 0.4s ease, transform 0.4s ease",
               transform: hanoiHovered ? "translateY(-4px)" : "translateY(0px)",
+              textShadow: hanoiHovered ? "0 0 34px rgba(124,156,186,0.4)" : "none",
             }}
           >
             Hà Nội
@@ -121,8 +122,8 @@ export default function ChoosePage() {
             style={{
               fontSize: "clamp(8px, 0.85vw, 11px)",
               letterSpacing: "0.28em",
-              color: "rgba(180,220,235,0.4)",
-              fontFamily: "'Courier New', monospace",
+              color: "rgba(174, 198, 220, 0.45)",
+              fontFamily: "var(--mono)",
               fontStyle: "italic",
               opacity: hanoiHovered ? 1 : 0,
               transition: "opacity 0.4s ease",
@@ -143,8 +144,8 @@ export default function ChoosePage() {
           inset: 0,
           left: `${divide}%`,
           background: `
-            radial-gradient(ellipse at 70% 50%, rgba(139,53,32,0.88) 0%, rgba(40,12,8,0.98) 70%),
-            radial-gradient(ellipse at 20% 80%, rgba(160,70,35,0.35) 0%, transparent 50%)
+            radial-gradient(ellipse at 70% 50%, rgba(130, 88, 54, 0.88) 0%, rgba(14, 9, 5, 0.98) 70%),
+            radial-gradient(ellipse at 20% 80%, rgba(200, 149, 108, 0.24) 0%, transparent 50%)
           `,
           cursor: "pointer",
           transition: "left 0.15s ease",
@@ -179,7 +180,7 @@ export default function ChoosePage() {
           <div
             style={{
               fontSize: "clamp(60px, 10vw, 130px)",
-              color: "#8b3520",
+              color: "var(--accent)",
               opacity: saigonHovered ? 0.15 : 0.08,
               lineHeight: 1,
               transition: "opacity 0.5s ease",
@@ -194,8 +195,8 @@ export default function ChoosePage() {
             style={{
               fontSize: "clamp(9px, 1vw, 12px)",
               letterSpacing: "0.4em",
-              color: "rgba(235,180,155,0.45)",
-              fontFamily: "'Courier New', monospace",
+              color: "rgba(224, 196, 164, 0.5)",
+              fontFamily: "var(--mono)",
               transition: "opacity 0.4s",
               opacity: saigonHovered ? 1 : 0.55,
             }}
@@ -207,11 +208,12 @@ export default function ChoosePage() {
             style={{
               fontSize: "clamp(36px, 5vw, 68px)",
               letterSpacing: "0.18em",
-              color: "#e8b090",
+              color: "#e6c3a1",
               lineHeight: 1,
               opacity: saigonHovered ? 1 : 0.65,
               transition: "opacity 0.4s ease, transform 0.4s ease",
               transform: saigonHovered ? "translateY(-4px)" : "translateY(0px)",
+              textShadow: saigonHovered ? "0 0 34px rgba(200,149,108,0.4)" : "none",
             }}
           >
             Sài Gòn
@@ -221,8 +223,8 @@ export default function ChoosePage() {
             style={{
               fontSize: "clamp(8px, 0.85vw, 11px)",
               letterSpacing: "0.28em",
-              color: "rgba(235,180,155,0.4)",
-              fontFamily: "'Courier New', monospace",
+              color: "rgba(224, 196, 164, 0.45)",
+              fontFamily: "var(--mono)",
               fontStyle: "italic",
               opacity: saigonHovered ? 1 : 0,
               transition: "opacity 0.4s ease",
@@ -241,7 +243,7 @@ export default function ChoosePage() {
           bottom: 0,
           left: `${divide}%`,
           width: "1px",
-          background: "linear-gradient(to bottom, transparent 0%, rgba(242,228,192,0.12) 20%, rgba(242,228,192,0.22) 50%, rgba(242,228,192,0.12) 80%, transparent 100%)",
+          background: "linear-gradient(to bottom, transparent 0%, rgba(238,241,245,0.1) 20%, rgba(238,241,245,0.2) 50%, rgba(238,241,245,0.1) 80%, transparent 100%)",
           pointerEvents: "none",
           transition: "left 0.15s ease",
         }}
@@ -254,9 +256,9 @@ export default function ChoosePage() {
           bottom: 28,
           left: "50%",
           transform: "translateX(-50%)",
-          fontFamily: "'Courier New', monospace",
+          fontFamily: "var(--mono)",
           fontSize: "7px",
-          color: "rgba(242,228,192,0.25)",
+          color: "rgba(238,241,245,0.25)",
           letterSpacing: "0.25em",
           pointerEvents: "none",
           whiteSpace: "nowrap",

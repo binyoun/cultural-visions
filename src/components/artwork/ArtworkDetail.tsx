@@ -14,7 +14,7 @@ export default function ArtworkDetail({ artwork }: ArtworkDetailProps) {
         {/* Image panel — sticky on desktop */}
         <div
           className="lg:sticky lg:top-16 lg:h-[calc(100vh-4rem)] flex items-center justify-center overflow-hidden p-4 lg:p-8"
-          style={{ backgroundColor: "#0a0806" }}
+          style={{ backgroundColor: "var(--bg)" }}
         >
           <ArtworkImage artwork={artwork} />
         </div>
@@ -23,8 +23,8 @@ export default function ArtworkDetail({ artwork }: ArtworkDetailProps) {
         <div
           className="p-6 lg:p-10 overflow-y-auto"
           style={{
-            backgroundColor: "#130f0c",
-            borderLeft: "1px solid rgba(122,21,21,0.2)",
+            backgroundColor: "var(--surface)",
+            borderLeft: "1px solid var(--line)",
           }}
         >
           <ArtworkMeta artwork={artwork} />

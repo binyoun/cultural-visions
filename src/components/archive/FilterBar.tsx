@@ -24,10 +24,12 @@ export default function FilterBar({
 }: FilterBarProps) {
   return (
     <div
-      className="sticky top-14 z-40 backdrop-blur-sm py-3"
+      className="sticky top-14 z-40 py-3"
       style={{
-        backgroundColor: "rgba(15, 13, 11, 0.96)",
-        borderBottom: "1px solid rgba(122,21,21,0.25)",
+        background: "rgba(5,6,7,0.5)",
+        backdropFilter: "blur(7px) saturate(1.15)",
+        WebkitBackdropFilter: "blur(7px) saturate(1.15)",
+        borderBottom: "1px solid var(--line)",
       }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -46,23 +48,33 @@ export default function FilterBar({
 
           {/* Sort + Count */}
           <div className="flex items-center gap-4 shrink-0">
-            <span className="text-xs" style={{ color: "#6a4a30" }}>
+            <span
+              className="uppercase"
+              style={{
+                fontFamily: "var(--mono)",
+                fontSize: "0.62rem",
+                letterSpacing: "0.08em",
+                color: "var(--text-dim)",
+              }}
+            >
               Showing {count} of {total} works
             </span>
             <select
               value={sort}
               onChange={(e) => onSortChange(e.target.value as SortOption)}
-              className="text-xs px-2 py-1 focus:outline-none"
+              className="px-2 py-1 focus:outline-none"
               style={{
-                backgroundColor: "#1a1410",
-                border: "1px solid rgba(122,21,21,0.4)",
-                color: "#b09070",
-                fontFamily: "'DM Serif Display', serif",
+                fontFamily: "var(--mono)",
+                fontSize: "0.68rem",
+                backgroundColor: "var(--surface)",
+                border: "1px solid var(--border)",
+                borderRadius: "6px",
+                color: "var(--text)",
               }}
             >
               <option value="year-desc">Year: Newest</option>
               <option value="year-asc">Year: Oldest</option>
-              <option value="artist-az">Artist: A–Z</option>
+              <option value="artist-az">Artist: A-Z</option>
             </select>
           </div>
         </div>

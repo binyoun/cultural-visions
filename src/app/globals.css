@@ -1,45 +1,51 @@
 @import "tailwindcss";
 
 :root {
-  --parchment:        #f2e4c0;
-  --parchment-deep:   #e8d4a0;
-  --parchment-aged:   #d4bc80;
-  --lacquer:          #7a1515;
-  --lacquer-light:    #9b2020;
-  --seal:             #b82020;
-  --ink:              #1a0a05;
-  --ink-secondary:    #4a2c1a;
-  --ink-muted:        #8a6040;
-  --ink-ghost:        #b09070;
-  --gold:             #9a7010;
-  --gold-light:       #c9a84c;
-  --campus-hanoi:     #2a5a6e;
-  --campus-saigon:    #8b3520;
+  --bg:            #050607;
+  --surface:       #0a0c0e;
+  --border:        #191d22;
+  --border-hover:  #2c313a;
+  --text:          #99a2ad;
+  --text-dim:      #545b66;
+  --text-bright:   #eef1f5;
+  --accent:        #c8956c;
+  --accent2:       #7c9cba;
+  --accent3:       #8fb47a;
+  --accent4:       #b48fc7;
+  --red:           #c75c5c;
+  --line:          rgba(238, 241, 245, 0.08);
+  --line-soft:     rgba(238, 241, 245, 0.045);
+  --ghost:         rgba(238, 241, 245, 0.05);
+  --ink:           #0a0b0d;
 
-  /* Legacy aliases kept for any remaining references */
-  --gallery-bg:        var(--parchment);
-  --gallery-surface:   var(--parchment-deep);
-  --gallery-border:    var(--lacquer);
-  --gallery-muted:     var(--ink-muted);
-  --gallery-secondary: var(--ink-secondary);
-  --gallery-primary:   var(--ink);
-  --gallery-accent:    var(--seal);
+  --campus-hanoi:  var(--accent2);
+  --campus-saigon: var(--accent);
+
+  --mono:  "JetBrains Mono", monospace;
+  --serif: "Newsreader", Georgia, serif;
+  --sans:  "Space Grotesk", sans-serif;
+
+  /* Backlit lettering glow for serif display titles */
+  --backlit:
+    0 0 10px rgba(216, 170, 120, 0.32),
+    0 0 26px rgba(216, 170, 120, 0.16),
+    0 0 52px rgba(216, 170, 120, 0.07);
 }
 
 html {
-  background-color: #0f0d0b;
-  color: var(--parchment);
+  background-color: var(--bg);
+  color: var(--text);
 }
 
 body {
   min-height: 100vh;
-  background-color: #0f0d0b;
+  background-color: var(--bg);
   background-image:
-    radial-gradient(ellipse at 15% 35%, rgba(42, 90, 110, 0.05) 0%, transparent 55%),
-    radial-gradient(ellipse at 85% 20%, rgba(122, 21, 21, 0.06) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 85%, rgba(74, 44, 26, 0.04) 0%, transparent 45%);
-  color: var(--parchment);
-  font-family: "DM Sans", sans-serif;
+    radial-gradient(ellipse at 15% 35%, rgba(124, 156, 186, 0.04) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 20%, rgba(200, 149, 108, 0.04) 0%, transparent 50%);
+  color: var(--text);
+  font-family: var(--sans);
+  line-height: 1.6;
 }
 
 * {
@@ -47,8 +53,12 @@ body {
 }
 
 ::selection {
-  background-color: var(--lacquer);
-  color: var(--parchment);
+  background-color: var(--accent);
+  color: var(--ink);
+}
+
+a {
+  color: inherit;
 }
 
 img {
@@ -56,9 +66,21 @@ img {
   -webkit-user-drag: none;
 }
 
-@keyframes seal-pulse {
-  0%, 100% { opacity: 0.85; }
-  50%       { opacity: 1; }
+/* Mono nav links: hover must win over inline base colors */
+.nav-link:hover {
+  color: var(--text-bright) !important;
+}
+
+/* Thin scrollbar for the sidebar index */
+.sidebar-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+.sidebar-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+.sidebar-scroll::-webkit-scrollbar-thumb {
+  background: var(--border);
 }
 
 @keyframes floatCloud {
@@ -75,16 +97,6 @@ img {
   100% { opacity: 0;    transform: translateX(26px); }
 }
 
-@keyframes bgCloudFloat {
-  0%,  100% { transform: translateY(0px);   opacity: var(--op, 0.18); }
-  50%        { transform: translateY(-14px); opacity: calc(var(--op, 0.18) * 1.25); }
-}
-
-@keyframes bgWaveDrift {
-  0%,  100% { transform: translateX(0px);   opacity: var(--op, 0.16); }
-  50%        { transform: translateX(18px);  opacity: calc(var(--op, 0.16) * 1.2); }
-}
-
 @keyframes smokeHanoi {
   0%,  100% { transform: translate(0px,    0px)   scale(1);    }
   30%        { transform: translate(-14px, -22px)  scale(1.06); }
@@ -95,4 +107,26 @@ img {
   0%,  100% { transform: translate(0px,   0px)    scale(1);    }
   38%        { transform: translate(16px, -24px)   scale(1.05); }
   72%        { transform: translate(-9px, -14px)   scale(0.97); }
+}
+
+@keyframes heroRise {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes navDrop {
+  from { opacity: 0; transform: translateY(-100%); }
+  to   { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .anim-nav-drop {
+    animation: navDrop 0.7s cubic-bezier(0.16, 1, 0.3, 1) backwards 0.05s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-nav-drop {
+    animation: none;
+  }
 }

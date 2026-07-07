@@ -2,26 +2,37 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useSidebar } from "@/components/layout/Sidebar";
 
 export default function Header() {
   const pathname = usePathname();
+  const { open, setOpen } = useSidebar();
   if (pathname === "/" || pathname === "/choose/") return null;
 
+  const monoLink: React.CSSProperties = {
+    fontFamily: "var(--mono)",
+    fontSize: "0.72rem",
+    fontWeight: 400,
+    letterSpacing: "0.08em",
+    textTransform: "uppercase",
+    textDecoration: "none",
+    transition: "color 0.2s",
+  };
+
   const campusLink = (campus: string, label: string) => {
-    const href = `/archive/${campus}/`;
     const isActive = pathname.includes(`/archive/${campus}`);
-    const activeColor = campus === "hanoi" ? "#2a5a6e" : "#8b3520";
+    const accent =
+      campus === "hanoi" ? "var(--campus-hanoi)" : "var(--campus-saigon)";
     return (
       <Link
-        href={href}
-        className={`text-sm tracking-widest uppercase transition-colors pb-0.5 ${
-          isActive ? "border-b" : "hover:opacity-70"
-        }`}
-        style={
-          isActive
-            ? { color: activeColor, borderColor: activeColor }
-            : { color: "#8a6040" }
-        }
+        href={`/archive/${campus}/`}
+        className="nav-link"
+        style={{
+          ...monoLink,
+          color: isActive ? accent : "var(--text-dim)",
+          borderBottom: isActive ? `1px solid ${accent}` : "1px solid transparent",
+          paddingBottom: "2px",
+        }}
       >
         {label}
       </Link>
@@ -32,82 +43,94 @@ export default function Header() {
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm"
+      className="fixed top-0 left-0 right-0 z-50 anim-nav-drop"
       style={{
-        backgroundColor: "rgba(15, 13, 11, 0.94)",
-        borderBottom: "1px solid rgba(122,21,21,0.35)",
+        background: "rgba(5,6,7,0.5)",
+        backdropFilter: "blur(7px) saturate(1.15)",
+        WebkitBackdropFilter: "blur(7px) saturate(1.15)",
+        borderBottom: "1px solid var(--line)",
       }}
     >
-      <div className="h-14 px-6 lg:px-10 grid grid-cols-3 items-center">
-        {/* Left — wordmark */}
-        <Link href="/" className="flex flex-col leading-tight group">
-          <span
-            className="text-[11px] tracking-[0.2em] uppercase transition-colors"
-            style={{ color: "#6a4a30" }}
-          >
-            RMIT University Vietnam
-          </span>
-          <span
-            className="text-[11px] tracking-[0.15em] uppercase transition-colors hidden sm:block font-serif"
-            style={{ color: "#c4906a" }}
-          >
-            Cultural Visions
-          </span>
-          <span
-            className="text-[10px] tracking-[0.1em] hidden sm:block font-light italic"
-            style={{ color: "#6a4a30" }}
-          >
-            Triển Lãm Ảnh Nghệ Thuật
-          </span>
-        </Link>
-
-        {/* Center — campus nav */}
-        <div className="flex items-center justify-center gap-6">
-          {campusLink("hanoi", "Hanoi")}
-          <span style={{ color: "rgba(122,21,21,0.25)" }} className="text-xs">|</span>
-          {campusLink("saigon", "Saigon")}
-        </div>
-
-        {/* Right — search + honored */}
-        <div className="flex items-center justify-end gap-4">
+      <div
+        className="px-4 sm:px-6 lg:px-10 flex items-center justify-between gap-4"
+        style={{ height: "56px" }}
+      >
+        {/* Left: hamburger (mobile) + wordmark */}
+        <div className="flex items-center gap-3 min-w-0">
           <button
-            aria-label="Search"
-            className="transition-colors"
-            style={{ color: "#7a5535" }}
+            type="button"
+            onClick={() => setOpen(!open)}
+            aria-label="Open artwork index"
+            aria-expanded={open}
+            className="lg:hidden flex flex-col justify-center gap-1 shrink-0"
+            style={{
+              width: "34px",
+              height: "34px",
+              padding: "7px",
+              marginLeft: "-7px",
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+            }}
           >
-            <svg
-              width="16" height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <circle cx="11" cy="11" r="8" />
-              <path d="m21 21-4.35-4.35" />
-            </svg>
+            {[0, 1, 2].map((i) => (
+              <span
+                key={i}
+                style={{
+                  display: "block",
+                  width: "18px",
+                  height: "1.5px",
+                  borderRadius: "1px",
+                  background: "var(--text-bright)",
+                  transition: "transform .25s, opacity .2s",
+                  transform:
+                    open && i === 0
+                      ? "translateY(5.5px) rotate(45deg)"
+                      : open && i === 2
+                        ? "translateY(-5.5px) rotate(-45deg)"
+                        : "none",
+                  opacity: open && i === 1 ? 0 : 1,
+                }}
+              />
+            ))}
           </button>
 
           <Link
-            href="/honored/"
-            className="text-xs font-medium px-4 py-1.5 transition-colors"
-            style={
-              isHonored
-                ? {
-                    backgroundColor: "#7a1515",
-                    color: "#f2e4c0",
-                    border: "1px solid #7a1515",
-                  }
-                : {
-                    backgroundColor: "transparent",
-                    color: "#7a1515",
-                    border: "1px solid rgba(122,21,21,0.5)",
-                  }
-            }
+            href="/"
+            className="whitespace-nowrap overflow-hidden text-ellipsis"
+            style={{
+              fontFamily: "var(--mono)",
+              fontSize: "0.78rem",
+              letterSpacing: "0.14em",
+              textTransform: "uppercase",
+              color: "var(--text-dim)",
+              textDecoration: "none",
+            }}
           >
-            <span style={{ color: isHonored ? "#f2e4c0" : "#7a1515" }}>★</span>{" "}
-            Honored Works
+            <b style={{ color: "var(--text-bright)", fontWeight: 700 }}>
+              cultural.visions
+            </b>
+            <span className="hidden sm:inline"> /rmit-vietnam</span>
+          </Link>
+        </div>
+
+        {/* Right: campus nav + honored */}
+        <div className="flex items-center gap-4 sm:gap-6 shrink-0">
+          {campusLink("hanoi", "Hanoi")}
+          {campusLink("saigon", "Saigon")}
+          <Link
+            href="/honored/"
+            className="nav-link"
+            style={{
+              ...monoLink,
+              color: isHonored ? "var(--accent)" : "var(--text-dim)",
+              borderBottom: isHonored
+                ? "1px solid var(--accent)"
+                : "1px solid transparent",
+              paddingBottom: "2px",
+            }}
+          >
+            Honored
           </Link>
         </div>
       </div>

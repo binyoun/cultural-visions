@@ -10,14 +10,24 @@ function SectionLabel({ en, vi }: { en: string; vi: string }) {
   return (
     <div className="mb-3">
       <h2
-        className="text-xs uppercase tracking-widest"
-        style={{ color: "#7a1515" }}
+        className="uppercase"
+        style={{
+          fontFamily: "var(--mono)",
+          fontSize: "0.62rem",
+          letterSpacing: "0.22em",
+          color: "var(--accent)",
+        }}
       >
         {en}
       </h2>
       <span
-        className="text-[9px] tracking-[0.1em] italic"
-        style={{ color: "#b09070" }}
+        className="italic"
+        style={{
+          fontFamily: "var(--mono)",
+          fontSize: "0.58rem",
+          letterSpacing: "0.1em",
+          color: "var(--text-dim)",
+        }}
       >
         {vi}
       </span>
@@ -31,15 +41,22 @@ export default function ArtworkMeta({ artwork }: ArtworkMetaProps) {
       {/* Title & Artist */}
       <div>
         <h1
-          className="font-serif text-3xl sm:text-4xl leading-tight"
-          style={{ color: "#f2e4c0" }}
+          className="text-3xl sm:text-4xl leading-tight"
+          style={{ fontFamily: "var(--serif)", color: "var(--text-bright)" }}
         >
           {artwork.title}
         </h1>
-        <p className="mt-2 text-lg" style={{ color: "#c4a480" }}>
+        <p className="mt-2 text-lg" style={{ color: "var(--text)" }}>
           {artwork.artistName}
         </p>
-        <p className="mt-1 text-sm" style={{ color: "#8a6040" }}>
+        <p
+          className="mt-1"
+          style={{
+            fontFamily: "var(--mono)",
+            fontSize: "0.72rem",
+            color: "var(--text-dim)",
+          }}
+        >
           {artwork.year}
         </p>
       </div>
@@ -54,7 +71,7 @@ export default function ArtworkMeta({ artwork }: ArtworkMetaProps) {
       {/* Artist Statement */}
       <div>
         <SectionLabel en="Artist Statement" vi="Tuyên Bố Nghệ Sĩ" />
-        <p className="text-sm leading-relaxed" style={{ color: "#b09070" }}>
+        <p className="text-sm leading-relaxed" style={{ color: "var(--text)" }}>
           {artwork.artistStatement}
         </p>
       </div>
@@ -63,8 +80,8 @@ export default function ArtworkMeta({ artwork }: ArtworkMetaProps) {
       <div>
         <SectionLabel en="Curator's Note" vi="Ghi Chú Giám Tuyển" />
         <p
-          className="text-sm leading-relaxed italic"
-          style={{ color: "#8a6040" }}
+          className="text-base leading-relaxed italic"
+          style={{ fontFamily: "var(--serif)", color: "var(--text)" }}
         >
           {artwork.curatorNote}
         </p>
@@ -73,10 +90,10 @@ export default function ArtworkMeta({ artwork }: ArtworkMetaProps) {
       {/* Artist Bio */}
       <div
         className="pt-6"
-        style={{ borderTop: "1px solid rgba(122,21,21,0.15)" }}
+        style={{ borderTop: "1px solid var(--line-soft)" }}
       >
         <SectionLabel en="About the Artist" vi="Về Nghệ Sĩ" />
-        <p className="text-sm leading-relaxed" style={{ color: "#b09070" }}>
+        <p className="text-sm leading-relaxed" style={{ color: "var(--text)" }}>
           {artwork.longBio}
         </p>
       </div>
@@ -84,9 +101,15 @@ export default function ArtworkMeta({ artwork }: ArtworkMetaProps) {
       {/* Copyright */}
       <div
         className="pt-4"
-        style={{ borderTop: "1px solid rgba(122,21,21,0.15)" }}
+        style={{ borderTop: "1px solid var(--line-soft)" }}
       >
-        <p className="text-xs" style={{ color: "#4a2c1a" }}>
+        <p
+          style={{
+            fontFamily: "var(--mono)",
+            fontSize: "0.62rem",
+            color: "var(--text-dim)",
+          }}
+        >
           © {artwork.year} {artwork.artistName}. All rights reserved.
         </p>
       </div>
@@ -95,8 +118,15 @@ export default function ArtworkMeta({ artwork }: ArtworkMetaProps) {
       <div>
         <Link
           href="/"
-          className="text-xs hover:underline"
-          style={{ color: "#7a1515" }}
+          className="nav-link uppercase"
+          style={{
+            fontFamily: "var(--mono)",
+            fontSize: "0.72rem",
+            letterSpacing: "0.08em",
+            color: "var(--accent)",
+            textDecoration: "none",
+            transition: "color 0.2s",
+          }}
         >
           ← Back to Archive
         </Link>
