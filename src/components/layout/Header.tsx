@@ -7,7 +7,7 @@ import { useSidebar } from "@/components/layout/Sidebar";
 export default function Header() {
   const pathname = usePathname();
   const { open, setOpen } = useSidebar();
-  if (pathname === "/" || pathname === "/choose/") return null;
+  if (pathname === "/choose/") return null;
 
   const monoLink: React.CSSProperties = {
     fontFamily: "var(--mono)",
@@ -115,7 +115,7 @@ export default function Header() {
         </div>
 
         {/* Right: campus nav + honored */}
-        <div className="flex items-center gap-4 sm:gap-6 shrink-0">
+        <div className="hidden sm:flex items-center gap-4 sm:gap-6 shrink-0">
           {campusLink("hanoi", "Hanoi")}
           {campusLink("saigon", "Saigon")}
           <Link

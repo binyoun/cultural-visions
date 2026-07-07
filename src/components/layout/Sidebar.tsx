@@ -40,10 +40,19 @@ export function useSidebar() {
   return useContext(SidebarContext);
 }
 
-function SectionLabel({ color, children }: { color: string; children: React.ReactNode }) {
+function SectionLabel({
+  color,
+  href,
+  children,
+}: {
+  color: string;
+  href: string;
+  children: React.ReactNode;
+}) {
   return (
-    <div
-      className="flex items-center gap-2 uppercase"
+    <Link
+      href={href}
+      className="nav-link flex items-center gap-2 uppercase"
       style={{
         fontFamily: "var(--mono)",
         fontSize: "0.62rem",
@@ -53,6 +62,8 @@ function SectionLabel({ color, children }: { color: string; children: React.Reac
         paddingBottom: "8px",
         marginBottom: "6px",
         borderBottom: "1px solid var(--line-soft)",
+        textDecoration: "none",
+        transition: "color 0.2s",
       }}
     >
       <span
@@ -66,7 +77,7 @@ function SectionLabel({ color, children }: { color: string; children: React.Reac
         }}
       />
       {children}
-    </div>
+    </Link>
   );
 }
 
@@ -118,7 +129,7 @@ export default function Sidebar({ entries }: SidebarProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
 
-  if (pathname === "/" || pathname === "/choose/") return null;
+  if (pathname === "/choose/") return null;
 
   const byYear = (a: SidebarEntry, b: SidebarEntry) =>
     b.year - a.year || a.title.localeCompare(b.title);
@@ -167,19 +178,25 @@ export default function Sidebar({ entries }: SidebarProps) {
         }}
       >
         <div style={{ marginBottom: "26px" }}>
-          <SectionLabel color="var(--campus-hanoi)">Hanoi</SectionLabel>
+          <SectionLabel color="var(--campus-hanoi)" href="/archive/hanoi/">
+            Hanoi
+          </SectionLabel>
           {hanoi.map((e) => (
             <SidebarLink key={e.slug} entry={e} />
           ))}
         </div>
         <div style={{ marginBottom: "26px" }}>
-          <SectionLabel color="var(--campus-saigon)">Saigon</SectionLabel>
+          <SectionLabel color="var(--campus-saigon)" href="/archive/saigon/">
+            Saigon
+          </SectionLabel>
           {saigon.map((e) => (
             <SidebarLink key={e.slug} entry={e} />
           ))}
         </div>
         <div style={{ marginBottom: "26px" }}>
-          <SectionLabel color="var(--accent4)">Honored</SectionLabel>
+          <SectionLabel color="var(--accent4)" href="/honored/">
+            Honored
+          </SectionLabel>
           {honored.map((e) => (
             <SidebarLink key={e.slug} entry={e} />
           ))}

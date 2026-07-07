@@ -123,10 +123,65 @@ img {
   .anim-nav-drop {
     animation: navDrop 0.7s cubic-bezier(0.16, 1, 0.3, 1) backwards 0.05s;
   }
+  .anim-hero-rise {
+    animation: heroRise 1.1s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .anim-nav-drop {
+  .anim-nav-drop,
+  .anim-hero-rise {
     animation: none;
   }
+}
+
+/* Landing hero: floor entry chips */
+.hero-chip {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text);
+  background: rgba(10, 12, 14, 0.62);
+  border: 1px solid var(--border-hover);
+  border-radius: 999px;
+  padding: 8px 16px;
+  text-decoration: none;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 20px rgba(200, 149, 108, 0.13);
+  transition: color 0.2s, border-color 0.2s, background 0.2s, box-shadow 0.2s;
+}
+.hero-chip:hover {
+  color: #f0e2ce;
+  border-color: rgba(224, 184, 132, 0.5);
+  box-shadow: 0 0 28px rgba(216, 170, 120, 0.34);
+}
+.hero-chip .n {
+  color: var(--accent);
+  margin-left: 6px;
+}
+@media (max-width: 480px) {
+  .hero-chip {
+    padding: 7px 12px;
+    font-size: 0.56rem;
+  }
+}
+
+/* Landing hero: archive stack cards */
+.stack-card-inner {
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.6),
+    0 0 18px rgba(216, 170, 120, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s;
+}
+.stack-card:hover .stack-card-inner {
+  transform: scale(1.03);
+  box-shadow: 0 24px 56px rgba(0, 0, 0, 0.7),
+    0 0 30px rgba(216, 170, 120, 0.18), inset 0 0 0 1px rgba(255, 255, 255, 0.16);
+}
+.stack-caption {
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+.stack-card:hover .stack-caption {
+  opacity: 1;
 }
