@@ -11,6 +11,8 @@ interface FilterBarProps {
   onSortChange: (sort: SortOption) => void;
   count: number;
   total: number;
+  cardSize: number;
+  onCardSizeChange: (size: number) => void;
 }
 
 export default function FilterBar({
@@ -21,6 +23,8 @@ export default function FilterBar({
   onSortChange,
   count,
   total,
+  cardSize,
+  onCardSizeChange,
 }: FilterBarProps) {
   return (
     <div
@@ -46,8 +50,29 @@ export default function FilterBar({
             ))}
           </div>
 
-          {/* Sort + Count */}
-          <div className="flex items-center gap-4 shrink-0">
+          {/* Size + Sort + Count */}
+          <div className="flex items-center gap-4 shrink-0 flex-wrap">
+            <label
+              className="flex items-center gap-2 uppercase"
+              style={{
+                fontFamily: "var(--mono)",
+                fontSize: "0.62rem",
+                letterSpacing: "0.08em",
+                color: "var(--text-dim)",
+              }}
+            >
+              Size
+              <input
+                type="range"
+                className="size-range"
+                min={220}
+                max={560}
+                step={20}
+                value={cardSize}
+                onChange={(e) => onCardSizeChange(Number(e.target.value))}
+                aria-label="Image size"
+              />
+            </label>
             <span
               className="uppercase"
               style={{

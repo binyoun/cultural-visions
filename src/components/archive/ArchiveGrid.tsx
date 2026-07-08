@@ -3,9 +3,10 @@ import ArtworkCard from "./ArtworkCard";
 
 interface ArchiveGridProps {
   artworks: ArtworkMatter[];
+  cardSize?: number;
 }
 
-export default function ArchiveGrid({ artworks }: ArchiveGridProps) {
+export default function ArchiveGrid({ artworks, cardSize = 340 }: ArchiveGridProps) {
   if (artworks.length === 0) {
     return (
       <div className="py-24 text-center">
@@ -15,7 +16,7 @@ export default function ArchiveGrid({ artworks }: ArchiveGridProps) {
   }
 
   return (
-    <div className="columns-1 sm:columns-2 lg:columns-3 gap-4">
+    <div className="gap-4" style={{ columnWidth: `${cardSize}px` }}>
       {artworks.map((artwork) => (
         <ArtworkCard key={artwork.slug} artwork={artwork} />
       ))}

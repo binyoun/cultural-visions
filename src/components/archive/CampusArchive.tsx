@@ -25,6 +25,7 @@ export default function CampusArchive({
 
   const [activeTags, setActiveTags] = useState<string[]>([]);
   const [sort, setSort] = useState<SortOption>("year-desc");
+  const [cardSize, setCardSize] = useState(340);
 
   const filteredAndSorted = useMemo(() => {
     const filtered = filterArtworksByTags(initialArtworks, activeTags);
@@ -87,9 +88,11 @@ export default function CampusArchive({
         onSortChange={setSort}
         count={filteredAndSorted.length}
         total={initialArtworks.length}
+        cardSize={cardSize}
+        onCardSizeChange={setCardSize}
       />
       <PageWrapper className="mt-6">
-        <ArchiveGrid artworks={filteredAndSorted} />
+        <ArchiveGrid artworks={filteredAndSorted} cardSize={cardSize} />
       </PageWrapper>
     </>
   );
