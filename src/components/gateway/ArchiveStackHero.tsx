@@ -285,7 +285,7 @@ export default function ArchiveStackHero({
               position: "absolute",
               left: 0,
               top: 0,
-              width: "clamp(280px, 44vw, 540px)",
+              width: "clamp(364px, 57vw, 700px)",
               aspectRatio: "1200 / 630",
               willChange: "transform, opacity",
               display: "block",
