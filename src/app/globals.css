@@ -119,12 +119,20 @@ img {
   to   { opacity: 1; transform: none; }
 }
 
+@keyframes redBreath {
+  0%, 100% { opacity: 0.55; }
+  50%      { opacity: 1; }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .anim-nav-drop {
     animation: navDrop 0.7s cubic-bezier(0.16, 1, 0.3, 1) backwards 0.05s;
   }
   .anim-hero-rise {
     animation: heroRise 1.1s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  }
+  .hero-red-glow {
+    animation: redBreath 8s ease-in-out infinite;
   }
 }
 
@@ -133,6 +141,12 @@ img {
   .anim-hero-rise {
     animation: none;
   }
+}
+
+.stack-card,
+.stack-card-inner {
+  -webkit-user-drag: none;
+  user-select: none;
 }
 
 /* Archive filter bar: image size slider */

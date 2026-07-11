@@ -21,7 +21,26 @@ const VP = { x: 0.79, y: 0.3 };
 /* Screen position of the front card (z = 0) */
 const FRONT = { x: 0.46, y: 0.57 };
 const Z_STEP = 1.0;
-const DRIFT_SPEED = 0.1; /* z units per second toward the viewer */
+const DRIFT_SPEED = 0.16; /* z units per second toward the viewer */
+/* z units advanced by dragging across the full stage width */
+const DRAG_GAIN = 3.2;
+/* RMIT / Vietnam red */
+const RED = "226,32,44";
+
+/* Rays converging on the vanishing point (viewBox 0..100) */
+const RAY_ENDS: Array<[number, number, boolean]> = [
+  [0, 0, false],
+  [0, 22, false],
+  [0, 48, true],
+  [0, 78, false],
+  [4, 100, false],
+  [30, 100, true],
+  [54, 100, false],
+  [78, 100, false],
+  [100, 92, false],
+  [100, 62, true],
+  [100, 4, false],
+];
 
 export default function ArchiveStackHero({
   works,
@@ -31,6 +50,8 @@ export default function ArchiveStackHero({
   const cardRefs = useRef<(HTMLAnchorElement | null)[]>([]);
   const mouse = useRef({ x: 0, y: 0 });
   const paused = useRef(false);
+  const off = useRef(0);
+  const drag = useRef({ active: false, lastX: 0, moved: 0 });
 
   const hanoiCount = works.filter((w) => w.campus === "Hanoi").length;
   const saigonCount = works.filter((w) => w.campus === "Saigon").length;
@@ -44,7 +65,8 @@ export default function ArchiveStackHero({
     ).matches;
     const N = works.length;
     const L = N * Z_STEP;
-    let off = 0;
+    /* reduced motion: no autonomous drift, dragging still repositions */
+    const drift = reduced ? 0 : DRIFT_SPEED;
     let rafId = 0;
     let last = performance.now();
 
@@ -58,7 +80,7 @@ export default function ArchiveStackHero({
       for (let i = 0; i < N; i++) {
         const el = cardRefs.current[i];
         if (!el) continue;
-        let z = (((i * Z_STEP - off) % L) + L) % L;
+        let z = (((i * Z_STEP - off.current) % L) + L) % L;
         if (z > L - 0.6) z -= L;
         /* s > 1 for z < 0: the card keeps travelling along the ray past
            the front position, sliding off toward the viewer as it fades */
@@ -81,17 +103,16 @@ export default function ArchiveStackHero({
     const step = (now: number) => {
       const dt = Math.min((now - last) / 1000, 0.1);
       last = now;
-      if (!paused.current && !document.hidden) {
-        off = (off + dt * DRIFT_SPEED) % L;
+      if (!paused.current && !drag.current.active && !document.hidden) {
+        off.current += dt * drift;
       }
+      off.current = ((off.current % L) + L) % L;
       layout();
       rafId = requestAnimationFrame(step);
     };
 
     layout();
-    if (!reduced) {
-      rafId = requestAnimationFrame(step);
-    }
+    rafId = requestAnimationFrame(step);
 
     const onResize = () => layout();
     window.addEventListener("resize", onResize);
@@ -101,11 +122,36 @@ export default function ArchiveStackHero({
     };
   }, [works.length]);
 
-  const onMouseMove = (e: React.MouseEvent) => {
+  const onPointerDown = (e: React.PointerEvent) => {
+    if (e.pointerType === "mouse" && e.button !== 0) return;
+    drag.current = { active: true, lastX: e.clientX, moved: 0 };
+  };
+
+  const onPointerMove = (e: React.PointerEvent) => {
     const rect = stageRef.current?.getBoundingClientRect();
     if (!rect) return;
-    mouse.current.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-    mouse.current.y = ((e.clientY - rect.top) / rect.height) * 2 - 1;
+    if (e.pointerType === "mouse") {
+      mouse.current.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+      mouse.current.y = ((e.clientY - rect.top) / rect.height) * 2 - 1;
+    }
+    if (drag.current.active) {
+      const dx = e.clientX - drag.current.lastX;
+      drag.current.lastX = e.clientX;
+      drag.current.moved += Math.abs(dx);
+      off.current += (dx / rect.width) * DRAG_GAIN;
+    }
+  };
+
+  const endDrag = () => {
+    drag.current.active = false;
+  };
+
+  /* A drag should scrub the deck, not open the card under the pointer */
+  const onClickCapture = (e: React.MouseEvent) => {
+    if (drag.current.moved > 8) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
   };
 
   const chip = (
@@ -137,6 +183,8 @@ export default function ArchiveStackHero({
         borderBottom: "1px solid var(--line)",
       }}
     >
+      <h1 className="sr-only">Cultural Visions, RMIT University Vietnam</h1>
+
       {/* Vanishing-point glow */}
       <div
         aria-hidden="true"
@@ -148,6 +196,22 @@ export default function ArchiveStackHero({
           background: `radial-gradient(60% 55% at ${VP.x * 100}% ${
             VP.y * 100
           }%, rgba(200,149,108,0.12), rgba(124,156,186,0.05) 40%, transparent 68%), radial-gradient(90% 90% at 50% 120%, rgba(0,0,0,0.6), transparent 60%)`,
+        }}
+      />
+
+      {/* Red light: RMIT / Vietnam. Breathing glow at the vanishing point
+          plus a faint wash rising from the lower left */}
+      <div
+        aria-hidden="true"
+        className="hero-red-glow"
+        style={{
+          position: "absolute",
+          inset: 0,
+          zIndex: 0,
+          pointerEvents: "none",
+          background: `radial-gradient(44% 38% at ${VP.x * 100}% ${
+            VP.y * 100
+          }%, rgba(${RED},0.15), transparent 62%), radial-gradient(64% 50% at 6% 100%, rgba(${RED},0.09), transparent 58%)`,
         }}
       />
 
@@ -181,9 +245,60 @@ export default function ArchiveStackHero({
         />
       </div>
 
-      {/* Wall-engraved title on the left wall plane */}
+      {/* Corridor rays converging on the vanishing point */}
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          zIndex: 1,
+          pointerEvents: "none",
+          WebkitMaskImage:
+            "radial-gradient(78% 72% at 79% 30%, #000 0%, rgba(0,0,0,0.5) 46%, transparent 80%)",
+          maskImage:
+            "radial-gradient(78% 72% at 79% 30%, #000 0%, rgba(0,0,0,0.5) 46%, transparent 80%)",
+        }}
+      >
+        {RAY_ENDS.map(([x, y, red], i) => (
+          <line
+            key={i}
+            x1={VP.x * 100}
+            y1={VP.y * 100}
+            x2={x}
+            y2={y}
+            stroke={red ? `rgba(${RED},0.20)` : "rgba(150,165,190,0.12)"}
+            strokeWidth={1}
+            vectorEffect="non-scaling-stroke"
+          />
+        ))}
+        {/* Vanishing-point reticle */}
+        <circle
+          cx={VP.x * 100}
+          cy={VP.y * 100}
+          r={1.7}
+          fill="none"
+          stroke={`rgba(${RED},0.4)`}
+          strokeWidth={1}
+          vectorEffect="non-scaling-stroke"
+        />
+        <circle
+          cx={VP.x * 100}
+          cy={VP.y * 100}
+          r={4.2}
+          fill="none"
+          stroke="rgba(199,184,159,0.16)"
+          strokeWidth={1}
+          vectorEffect="non-scaling-stroke"
+        />
+      </svg>
+
+      {/* Abstract archive diagram on the left wall plane */}
       <div
-        aria-hidden="false"
+        aria-hidden="true"
         style={{
           position: "absolute",
           inset: 0,
@@ -195,82 +310,94 @@ export default function ArchiveStackHero({
         }}
       >
         <div
+          className="anim-hero-rise"
           style={{
+            animationDelay: "0.18s",
             position: "absolute",
             left: "1.4%",
-            top: "16%",
+            top: "13%",
             transform: "rotateY(54deg) translateX(340px)",
             transformOrigin: "left center",
           }}
         >
-          <p
-            className="anim-hero-rise uppercase"
-            style={{
-              animationDelay: "0.12s",
-              fontFamily: "var(--mono)",
-              fontSize: "0.82rem",
-              letterSpacing: "0.3em",
-              color: "rgba(186,171,148,0.5)",
-              textShadow:
-                "0 -1px 1px rgba(0,0,0,0.55), 0 1px 0 rgba(226,210,184,0.09), 0 0 8px rgba(216,170,120,0.26), 0 0 20px rgba(216,170,120,0.12)",
-              marginBottom: 18,
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 10,
-            }}
+          <svg
+            width="340"
+            height="430"
+            viewBox="0 0 340 430"
+            fill="none"
+            style={{ display: "block", opacity: 0.85 }}
           >
-            <span
-              style={{
-                width: 26,
-                height: 1,
-                background: "rgba(186,171,148,0.28)",
-                display: "inline-block",
-              }}
+            {/* deck in side elevation: frames receding to a point */}
+            <line
+              x1="18"
+              y1="330"
+              x2="300"
+              y2="96"
+              stroke="rgba(199,184,159,0.22)"
+              strokeWidth="1"
+              strokeDasharray="3 5"
             />
-            RMIT University Vietnam
-          </p>
-          <h1
-            className="anim-hero-rise uppercase"
-            style={{
-              animationDelay: "0.22s",
-              fontFamily: "var(--serif)",
-              fontWeight: 400,
-              fontSize: "clamp(3.4rem, 6.4vw, 6rem)",
-              lineHeight: 1.02,
-              letterSpacing: "0.075em",
-              color: "rgba(199,184,159,0.5)",
-              textShadow:
-                "0 -1px 1px rgba(0,0,0,0.62), 0 1px 0 rgba(232,216,190,0.12), 0 3px 6px rgba(0,0,0,0.30), var(--backlit)",
-              margin: 0,
-            }}
-          >
-            Cultural
-            <br />
-            Visions
-          </h1>
-          <p
-            className="anim-hero-rise italic"
-            style={{
-              animationDelay: "0.34s",
-              fontFamily: "var(--serif)",
-              fontSize: "1.05rem",
-              letterSpacing: "0.08em",
-              color: "rgba(186,171,148,0.4)",
-              marginTop: 16,
-            }}
-          >
-            Triển Lãm Ảnh Nghệ Thuật
-          </p>
+            <rect x="18" y="242" width="150" height="88" stroke="rgba(199,184,159,0.4)" strokeWidth="1" />
+            <rect x="92" y="200" width="104" height="61" stroke="rgba(199,184,159,0.3)" strokeWidth="1" />
+            <rect x="152" y="171" width="72" height="42" stroke={`rgba(${RED},0.42)`} strokeWidth="1" />
+            <rect x="197" y="150" width="50" height="29" stroke="rgba(199,184,159,0.26)" strokeWidth="1" />
+            <rect x="229" y="135" width="35" height="20" stroke="rgba(199,184,159,0.2)" strokeWidth="1" />
+            <rect x="252" y="124" width="24" height="14" stroke="rgba(199,184,159,0.15)" strokeWidth="1" />
+            <circle cx="300" cy="96" r="3.4" stroke={`rgba(${RED},0.5)`} strokeWidth="1" />
+            <line x1="293" y1="96" x2="307" y2="96" stroke={`rgba(${RED},0.32)`} strokeWidth="1" />
+            <line x1="300" y1="89" x2="300" y2="103" stroke={`rgba(${RED},0.32)`} strokeWidth="1" />
+
+            {/* orbit arc over the deck */}
+            <path
+              d="M 30 150 Q 150 34 292 62"
+              stroke="rgba(150,165,190,0.2)"
+              strokeWidth="1"
+              strokeDasharray="1 7"
+            />
+            <circle cx="30" cy="150" r="2" fill="rgba(199,184,159,0.4)" />
+            <circle cx="292" cy="62" r="2" fill={`rgba(${RED},0.55)`} />
+
+            {/* accession ruler */}
+            <line x1="18" y1="374" x2="300" y2="374" stroke="rgba(199,184,159,0.28)" strokeWidth="1" />
+            {Array.from({ length: 18 }, (_, i) => {
+              const x = 18 + i * (282 / 17);
+              const major = i % 4 === 0;
+              return (
+                <line
+                  key={i}
+                  x1={x}
+                  y1={374}
+                  x2={x}
+                  y2={major ? 362 : 368}
+                  stroke={
+                    i === 12
+                      ? `rgba(${RED},0.55)`
+                      : `rgba(199,184,159,${major ? 0.34 : 0.2})`
+                  }
+                  strokeWidth="1"
+                />
+              );
+            })}
+          </svg>
         </div>
       </div>
 
-      {/* Drifting archive stack */}
+      {/* Drifting archive stack: drag to scrub, hover a card to hold it */}
       <div
         ref={stageRef}
-        onMouseMove={onMouseMove}
-        onMouseEnter={() => (paused.current = true)}
-        onMouseLeave={() => (paused.current = false)}
-        style={{ position: "absolute", inset: 0, zIndex: 2 }}
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={endDrag}
+        onPointerLeave={endDrag}
+        onPointerCancel={endDrag}
+        onClickCapture={onClickCapture}
+        style={{
+          position: "absolute",
+          inset: 0,
+          zIndex: 2,
+          cursor: "grab",
+          touchAction: "pan-y",
+        }}
       >
         {works.map((w, i) => (
           <Link
@@ -281,6 +408,10 @@ export default function ArchiveStackHero({
             }}
             className="stack-card"
             aria-label={`${w.title} by ${w.artistName}`}
+            draggable={false}
+            onDragStart={(e) => e.preventDefault()}
+            onMouseEnter={() => (paused.current = true)}
+            onMouseLeave={() => (paused.current = false)}
             style={{
               position: "absolute",
               left: 0,
