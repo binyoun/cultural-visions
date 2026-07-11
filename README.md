@@ -23,6 +23,13 @@ Current registry:
 | CV-SG-005 | Cyclo at Dusk | Tôn Nguyễn | placeholder content |
 | CV-SG-006 | Monsoon Market | Tôn Nguyễn | placeholder content |
 | CV-SG-007 | Wire City | Tôn Nguyễn | placeholder content |
+| CV-SG-008 | Layers of Life | Florin Schroth | rễ-root 3-2025 |
+| CV-SG-009 | vị-nhà (something that tastes like home) | Le Duc Anh | rễ-root 3-2025 |
+| CV-SG-010 | i miss | Emma | rễ-root 3-2025 |
+| CV-SG-011 | INTRA-SELF, INTER-SELF | alicia ý huỳnh | rễ-root 3-2025 |
+| CV-SG-012 | Toi Tim Ve | Bui Ngoc Kieu Anh | rễ-root 3-2025 |
+| CV-SG-013 | Có | Indochine (Nguyen Huu Nam Duong) | rễ-root 3-2025 |
+| CV-SG-014 | Fear of being Wrong | Nguyễn Anh Thư | rễ-root 3-2025 |
 | CV-HN-001 | Lantern Festival, Hoi An | Ngô Đình Hoàng Phước | placeholder content |
 | CV-HN-002 | Lotus Study No. 3 | Ngô Đình Hoàng Phước | placeholder content |
 | CV-HN-003 | Morning Offering | Ngô Đình Hoàng Phước | placeholder content |
