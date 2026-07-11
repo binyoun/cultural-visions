@@ -13,8 +13,8 @@ portfolioUrl: "https://www.figma.com/proto/FYJnC73WkZLdCgvV6BbSNN/v%E1%BB%8B-nh%
 imagePath: "/cultural-visions/images/archive/le-duc-anh/vi-nha.jpg"
 thumbnailPath: "/cultural-visions/images/archive/le-duc-anh/thumbnail-vi-nha.jpg"
 imageAlt: "A small bamboo frame lashed with palm leaf holds layered cyanotype prints on translucent coconut rice paper, hung in rows like drying sheets."
-imageWidth: 1800
-imageHeight: 1200
+imageWidth: 1920
+imageHeight: 1280
 tags: ["#Heritage", "#Memory"]
 isHonored: false
 featured: false

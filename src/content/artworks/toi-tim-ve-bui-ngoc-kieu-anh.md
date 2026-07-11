@@ -13,8 +13,8 @@ portfolioUrl: "https://drive.google.com/drive/u/1/folders/1lv3Ps2Tnxnfw-Ft2zKNdU
 imagePath: "/cultural-visions/images/archive/bui-ngoc-kieu-anh/toi-tim-ve.jpg"
 thumbnailPath: "/cultural-visions/images/archive/bui-ngoc-kieu-anh/thumbnail-toi-tim-ve.jpg"
 imageAlt: "Ten small cyanotype prints on fabric documenting a craft village, each with handwritten notes on rice paper and joined by red thread, laid over a woven mat."
-imageWidth: 1800
-imageHeight: 1406
+imageWidth: 1920
+imageHeight: 1500
 tags: ["#Heritage", "#Memory"]
 isHonored: false
 featured: false

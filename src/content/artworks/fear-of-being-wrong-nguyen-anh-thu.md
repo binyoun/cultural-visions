@@ -13,8 +13,8 @@ portfolioUrl: "https://drive.google.com/file/d/12IMPLRM3P2YbXhXuNObREKCRlMyorIq1
 imagePath: "/cultural-visions/images/archive/nguyen-anh-thu/fear-of-being-wrong.jpg"
 thumbnailPath: "/cultural-visions/images/archive/nguyen-anh-thu/thumbnail-fear-of-being-wrong.jpg"
 imageAlt: "Black and white multiple exposure: a pale moth rests amid blurred, streaking diagonals of grass and shadow, the frame smeared by motion."
-imageWidth: 1800
-imageHeight: 1285
+imageWidth: 1920
+imageHeight: 1371
 tags: ["#Identity", "#Nature"]
 isHonored: false
 featured: false

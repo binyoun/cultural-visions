@@ -13,8 +13,8 @@ portfolioUrl: "https://layersoflife.art/"
 imagePath: "/cultural-visions/images/archive/florin-schroth/layers-of-life.jpg"
 thumbnailPath: "/cultural-visions/images/archive/florin-schroth/thumbnail-layers-of-life.jpg"
 imageAlt: "A face looks out from a dense pile of patterned secondhand clothing, only the eyes visible between folds of printed fabric."
-imageWidth: 1800
-imageHeight: 942
+imageWidth: 1920
+imageHeight: 1005
 tags: ["#Identity", "#DailyLife"]
 isHonored: false
 featured: false

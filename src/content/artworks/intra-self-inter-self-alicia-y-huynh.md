@@ -13,8 +13,8 @@ portfolioUrl: "https://aliciayhuynh.wordpress.com/"
 imagePath: "/cultural-visions/images/archive/alicia-y-huynh/intra-self-inter-self.jpg"
 thumbnailPath: "/cultural-visions/images/archive/alicia-y-huynh/thumbnail-intra-self-inter-self.jpg"
 imageAlt: "Installation view: an accordion-fold zine of black and white photographs stands open on a white table, surrounded by prints including a portrait woven from paper strips."
-imageWidth: 1800
-imageHeight: 1013
+imageWidth: 2133
+imageHeight: 1200
 tags: ["#Identity"]
 isHonored: false
 featured: false
