@@ -101,7 +101,10 @@ export default function ArtworkMeta({ artwork }: ArtworkMetaProps) {
       {artwork.artistStatement && (
         <div>
           <SectionLabel en="Artist Statement" vi="Tuyên Bố Nghệ Sĩ" />
-          <p className="text-sm leading-relaxed" style={{ color: "var(--text)" }}>
+          <p
+            className="text-sm leading-relaxed"
+            style={{ color: "var(--text)", whiteSpace: "pre-line" }}
+          >
             {artwork.artistStatement}
           </p>
         </div>
@@ -127,7 +130,10 @@ export default function ArtworkMeta({ artwork }: ArtworkMetaProps) {
           style={{ borderTop: "1px solid var(--line-soft)" }}
         >
           <SectionLabel en="About the Artist" vi="Về Nghệ Sĩ" />
-          <p className="text-sm leading-relaxed" style={{ color: "var(--text)" }}>
+          <p
+            className="text-sm leading-relaxed"
+            style={{ color: "var(--text)", whiteSpace: "pre-line" }}
+          >
             {artwork.longBio || artwork.shortBio}
           </p>
         </div>

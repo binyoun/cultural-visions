@@ -32,6 +32,7 @@ Current registry:
 | CV-SG-014 | Fear of being Wrong | Nguyễn Anh Thư | rễ-root 3-2025 |
 | CV-SG-015 | Mẫu (母, Mother) | Ton Nguyen | honored; presented to the Australian Minister for Education, 10 Dec 2025 |
 | CV-SG-016 | Hưng Long (興龍, Rising Dragon) | Ngo Dinh Hoang Phuoc | honored; presented to the Governor-General of Australia, 12 Sep 2025 |
+| CV-SG-017 | Come to the Other Side, No. 9 | Nguyen Bao Tran | honored; presented to the Australian Consul-General in HCMC, 14 Apr 2026 |
 | CV-HN-001 | Lantern Festival, Hoi An | Ngô Đình Hoàng Phước | retired 11 Jul 2026 (placeholder removed) |
 | CV-HN-002 | Lotus Study No. 3 | Ngô Đình Hoàng Phước | retired 11 Jul 2026 (placeholder removed) |
 | CV-HN-003 | Morning Offering | Ngô Đình Hoàng Phước | retired 11 Jul 2026 (placeholder removed) |

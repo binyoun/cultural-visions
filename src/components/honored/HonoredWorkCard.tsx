@@ -115,7 +115,10 @@ export default function HonoredWorkCard({ artwork, index }: HonoredWorkCardProps
               <h3 className="mb-3" style={monoLabel}>
                 Artist Statement
               </h3>
-              <p className="text-sm leading-relaxed" style={{ color: "var(--text)" }}>
+              <p
+                className="text-sm leading-relaxed"
+                style={{ color: "var(--text)", whiteSpace: "pre-line" }}
+              >
                 {artwork.artistStatement}
               </p>
             </div>
