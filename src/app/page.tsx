@@ -13,7 +13,5 @@ export default function GatewayPage() {
       campus: aw.campus,
       imagePath: aw.imagePath,
     }));
-  const honoredCount = artworks.filter((aw) => aw.isHonored).length;
-
-  return <ArchiveStackHero works={works} honoredCount={honoredCount} />;
+  return <ArchiveStackHero works={works} />;
 }

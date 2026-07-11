@@ -124,6 +124,11 @@ img {
   50%      { opacity: 1; }
 }
 
+@keyframes orbitSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .anim-nav-drop {
     animation: navDrop 0.7s cubic-bezier(0.16, 1, 0.3, 1) backwards 0.05s;
@@ -133,6 +138,12 @@ img {
   }
   .hero-red-glow {
     animation: redBreath 8s ease-in-out infinite;
+  }
+  .orbit-spin {
+    animation: orbitSpin linear infinite;
+  }
+  .orbit-spin-rev {
+    animation: orbitSpin linear infinite reverse;
   }
 }
 

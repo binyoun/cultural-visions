@@ -13,7 +13,6 @@ export interface HeroWork {
 
 interface ArchiveStackHeroProps {
   works: HeroWork[];
-  honoredCount: number;
 }
 
 /* Vanishing point of the corridor, as fractions of the stage */
@@ -42,19 +41,13 @@ const RAY_ENDS: Array<[number, number, boolean]> = [
   [100, 4, false],
 ];
 
-export default function ArchiveStackHero({
-  works,
-  honoredCount,
-}: ArchiveStackHeroProps) {
+export default function ArchiveStackHero({ works }: ArchiveStackHeroProps) {
   const stageRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLAnchorElement | null)[]>([]);
   const mouse = useRef({ x: 0, y: 0 });
   const paused = useRef(false);
   const off = useRef(0);
   const drag = useRef({ active: false, lastX: 0, moved: 0 });
-
-  const hanoiCount = works.filter((w) => w.campus === "Hanoi").length;
-  const saigonCount = works.filter((w) => w.campus === "Saigon").length;
 
   useEffect(() => {
     const stage = stageRef.current;
@@ -154,29 +147,14 @@ export default function ArchiveStackHero({
     }
   };
 
-  const chip = (
-    href: string,
-    label: string,
-    n: number,
-    delay: string
-  ) => (
-    <Link
-      key={label}
-      href={href}
-      className="hero-chip anim-hero-rise"
-      style={{ animationDelay: delay }}
-    >
-      {label}
-      <span className="n">{n}</span>
-    </Link>
-  );
-
   return (
     <section
       aria-label="Cultural Visions archive gateway"
       style={{
         position: "relative",
-        height: "calc(100svh - 56px)",
+        /* header (56px) and the slim footer stay inside the first screen */
+        height: "calc(100svh - 56px - 42px)",
+        minHeight: 480,
         marginTop: 56,
         overflow: "hidden",
         backgroundColor: "var(--bg)",
@@ -296,7 +274,7 @@ export default function ArchiveStackHero({
         />
       </svg>
 
-      {/* Abstract archive diagram on the left wall plane */}
+      {/* Orbital diagram on the left wall plane: nested rings in 3D */}
       <div
         aria-hidden="true"
         style={{
@@ -315,70 +293,139 @@ export default function ArchiveStackHero({
             animationDelay: "0.18s",
             position: "absolute",
             left: "1.4%",
-            top: "13%",
+            top: "14%",
+            width: 380,
+            height: 380,
             transform: "rotateY(54deg) translateX(340px)",
             transformOrigin: "left center",
+            transformStyle: "preserve-3d",
           }}
         >
-          <svg
-            width="340"
-            height="430"
-            viewBox="0 0 340 430"
-            fill="none"
-            style={{ display: "block", opacity: 0.85 }}
+          {/* flat rings on the wall */}
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              borderRadius: "50%",
+              border: "1px dashed rgba(199,184,159,0.34)",
+            }}
+          />
+          <div
+            style={{
+              position: "absolute",
+              inset: 52,
+              borderRadius: "50%",
+              border: "1px solid rgba(150,165,190,0.2)",
+            }}
+          />
+          <div
+            style={{
+              position: "absolute",
+              inset: 108,
+              borderRadius: "50%",
+              border: "1px dashed rgba(199,184,159,0.22)",
+            }}
+          />
+
+          {/* tilted rings crossing the plane: armillary depth */}
+          <div
+            style={{
+              position: "absolute",
+              inset: 14,
+              borderRadius: "50%",
+              border: `1px solid rgba(${RED},0.32)`,
+              transform: "rotateX(70deg)",
+              boxShadow: `0 0 18px rgba(${RED},0.10)`,
+            }}
+          />
+          <div
+            style={{
+              position: "absolute",
+              inset: 44,
+              borderRadius: "50%",
+              border: "1px solid rgba(150,165,190,0.16)",
+              transform: "rotateY(64deg)",
+            }}
+          />
+
+          {/* orbiting markers */}
+          <div
+            className="orbit-spin"
+            style={{ position: "absolute", inset: 0, animationDuration: "72s" }}
           >
-            {/* deck in side elevation: frames receding to a point */}
-            <line
-              x1="18"
-              y1="330"
-              x2="300"
-              y2="96"
-              stroke="rgba(199,184,159,0.22)"
-              strokeWidth="1"
-              strokeDasharray="3 5"
+            <span
+              style={{
+                position: "absolute",
+                top: -3,
+                left: "50%",
+                transform: "translateX(-50%)",
+                width: 6,
+                height: 6,
+                borderRadius: "50%",
+                background: `rgba(${RED},0.85)`,
+                boxShadow: `0 0 12px 3px rgba(${RED},0.4)`,
+              }}
             />
-            <rect x="18" y="242" width="150" height="88" stroke="rgba(199,184,159,0.4)" strokeWidth="1" />
-            <rect x="92" y="200" width="104" height="61" stroke="rgba(199,184,159,0.3)" strokeWidth="1" />
-            <rect x="152" y="171" width="72" height="42" stroke={`rgba(${RED},0.42)`} strokeWidth="1" />
-            <rect x="197" y="150" width="50" height="29" stroke="rgba(199,184,159,0.26)" strokeWidth="1" />
-            <rect x="229" y="135" width="35" height="20" stroke="rgba(199,184,159,0.2)" strokeWidth="1" />
-            <rect x="252" y="124" width="24" height="14" stroke="rgba(199,184,159,0.15)" strokeWidth="1" />
-            <circle cx="300" cy="96" r="3.4" stroke={`rgba(${RED},0.5)`} strokeWidth="1" />
-            <line x1="293" y1="96" x2="307" y2="96" stroke={`rgba(${RED},0.32)`} strokeWidth="1" />
-            <line x1="300" y1="89" x2="300" y2="103" stroke={`rgba(${RED},0.32)`} strokeWidth="1" />
-
-            {/* orbit arc over the deck */}
-            <path
-              d="M 30 150 Q 150 34 292 62"
-              stroke="rgba(150,165,190,0.2)"
-              strokeWidth="1"
-              strokeDasharray="1 7"
+          </div>
+          <div
+            className="orbit-spin-rev"
+            style={{
+              position: "absolute",
+              inset: 52,
+              animationDuration: "46s",
+            }}
+          >
+            <span
+              style={{
+                position: "absolute",
+                top: -2.5,
+                left: "50%",
+                transform: "translateX(-50%)",
+                width: 5,
+                height: 5,
+                borderRadius: "50%",
+                background: "rgba(199,184,159,0.7)",
+                boxShadow: "0 0 8px 2px rgba(199,184,159,0.25)",
+              }}
             />
-            <circle cx="30" cy="150" r="2" fill="rgba(199,184,159,0.4)" />
-            <circle cx="292" cy="62" r="2" fill={`rgba(${RED},0.55)`} />
+          </div>
 
-            {/* accession ruler */}
-            <line x1="18" y1="374" x2="300" y2="374" stroke="rgba(199,184,159,0.28)" strokeWidth="1" />
-            {Array.from({ length: 18 }, (_, i) => {
-              const x = 18 + i * (282 / 17);
-              const major = i % 4 === 0;
-              return (
-                <line
-                  key={i}
-                  x1={x}
-                  y1={374}
-                  x2={x}
-                  y2={major ? 362 : 368}
-                  stroke={
-                    i === 12
-                      ? `rgba(${RED},0.55)`
-                      : `rgba(199,184,159,${major ? 0.34 : 0.2})`
-                  }
-                  strokeWidth="1"
-                />
-              );
-            })}
-          </svg>
+          {/* centre: red core and crosshair */}
+          <span
+            style={{
+              position: "absolute",
+              left: "50%",
+              top: "50%",
+              transform: "translate(-50%, -50%)",
+              width: 5,
+              height: 5,
+              borderRadius: "50%",
+              background: `rgba(${RED},0.9)`,
+              boxShadow: `0 0 14px 4px rgba(${RED},0.35)`,
+            }}
+          />
+          <span
+            style={{
+              position: "absolute",
+              left: "50%",
+              top: "50%",
+              transform: "translate(-50%, -50%)",
+              width: 46,
+              height: 1,
+              background: "rgba(199,184,159,0.3)",
+            }}
+          />
+          <span
+            style={{
+              position: "absolute",
+              left: "50%",
+              top: "50%",
+              transform: "translate(-50%, -50%)",
+              width: 1,
+              height: 46,
+              background: "rgba(199,184,159,0.3)",
+            }}
+          />
         </div>
       </div>
 
@@ -481,25 +528,6 @@ export default function ArchiveStackHero({
         ))}
       </div>
 
-      {/* Entry chips along the floor */}
-      <div
-        style={{
-          position: "absolute",
-          left: 0,
-          right: 0,
-          bottom: "7%",
-          zIndex: 6,
-          display: "flex",
-          justifyContent: "center",
-          gap: 14,
-          flexWrap: "wrap",
-          padding: "0 16px",
-        }}
-      >
-        {chip("/archive/hanoi/", "Hà Nội", hanoiCount, "0.6s")}
-        {chip("/archive/saigon/", "Sài Gòn", saigonCount, "0.7s")}
-        {chip("/honored/", "Honored", honoredCount, "0.8s")}
-      </div>
     </section>
   );
 }
