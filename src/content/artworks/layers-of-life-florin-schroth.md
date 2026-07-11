@@ -8,7 +8,7 @@ cohort: "3-2025"
 year: 2025
 campus: "Saigon"
 medium: "Mixed Media Installation, Fiber Sculpture, QR Code, Recycled Clothing"
-exhibition: "rễ-root, Semester 3 2025, RMIT University Vietnam"
+exhibition: "Exhibited in rễ-root, Semester 3 2025, RMIT University Vietnam"
 portfolioUrl: "https://layersoflife.art/"
 imagePath: "/cultural-visions/images/archive/florin-schroth/layers-of-life.jpg"
 thumbnailPath: "/cultural-visions/images/archive/florin-schroth/thumbnail-layers-of-life.jpg"

@@ -8,7 +8,7 @@ cohort: "3-2025"
 year: 2025
 campus: "Saigon"
 medium: "Digital Image"
-exhibition: "rễ-root, Semester 3 2025, RMIT University Vietnam"
+exhibition: "Exhibited in rễ-root, Semester 3 2025, RMIT University Vietnam"
 portfolioUrl: "https://drive.google.com/file/d/12IMPLRM3P2YbXhXuNObREKCRlMyorIq1/view?usp=sharing"
 imagePath: "/cultural-visions/images/archive/nguyen-anh-thu/fear-of-being-wrong.jpg"
 thumbnailPath: "/cultural-visions/images/archive/nguyen-anh-thu/thumbnail-fear-of-being-wrong.jpg"

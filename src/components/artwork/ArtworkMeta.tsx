@@ -85,7 +85,7 @@ export default function ArtworkMeta({ artwork }: ArtworkMetaProps) {
               color: "var(--text-dim)",
             }}
           >
-            Exhibited: {artwork.exhibition}
+            {artwork.exhibition}
           </p>
         )}
       </div>

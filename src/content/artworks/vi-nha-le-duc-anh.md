@@ -8,7 +8,7 @@ cohort: "3-2025"
 year: 2025
 campus: "Saigon"
 medium: "Cyanotype Printing on Bánh Tráng Dừa"
-exhibition: "rễ-root, Semester 3 2025, RMIT University Vietnam"
+exhibition: "Exhibited in rễ-root, Semester 3 2025, RMIT University Vietnam"
 portfolioUrl: "https://www.figma.com/proto/FYJnC73WkZLdCgvV6BbSNN/v%E1%BB%8B-nh%C3%A0-%7C-something-that-tastes-like-home?page-id=0%3A1&node-id=1-2&p=f&viewport=586%2C45%2C0.09&t=vTRw65smSzvY3T2y-1&scaling=contain&content-scaling=fixed"
 imagePath: "/cultural-visions/images/archive/le-duc-anh/vi-nha.jpg"
 thumbnailPath: "/cultural-visions/images/archive/le-duc-anh/thumbnail-vi-nha.jpg"

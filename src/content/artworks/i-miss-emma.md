@@ -8,7 +8,7 @@ cohort: "3-2025"
 year: 2025
 campus: "Saigon"
 medium: "Mixed Media Interactive Installation"
-exhibition: "rễ-root, Semester 3 2025, RMIT University Vietnam"
+exhibition: "Exhibited in rễ-root, Semester 3 2025, RMIT University Vietnam"
 portfolioUrl: "https://www.figma.com/proto/gENAA9riik8wRYmEvigWGE/Untitled?node-id=54-43&t=usfyrEz9lEjD9hLv-0&scaling=scale-down&content-scaling=fixed&page-id=0%3A1"
 imagePath: "/cultural-visions/images/archive/emma/i-miss.jpg"
 thumbnailPath: "/cultural-visions/images/archive/emma/thumbnail-i-miss.jpg"

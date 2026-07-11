@@ -8,7 +8,7 @@ cohort: "3-2025"
 year: 2025
 campus: "Saigon"
 medium: "Mixed Media, Cyanotype on Fabric, Rice Paper, Thread"
-exhibition: "rễ-root, Semester 3 2025, RMIT University Vietnam"
+exhibition: "Exhibited in rễ-root, Semester 3 2025, RMIT University Vietnam"
 portfolioUrl: "https://drive.google.com/drive/u/1/folders/1lv3Ps2Tnxnfw-Ft2zKNdUFpTsejnPU7y"
 imagePath: "/cultural-visions/images/archive/bui-ngoc-kieu-anh/toi-tim-ve.jpg"
 thumbnailPath: "/cultural-visions/images/archive/bui-ngoc-kieu-anh/thumbnail-toi-tim-ve.jpg"

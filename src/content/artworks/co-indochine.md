@@ -8,7 +8,7 @@ cohort: "3-2025"
 year: 2025
 campus: "Saigon"
 medium: "Digital Image"
-exhibition: "rễ-root, Semester 3 2025, RMIT University Vietnam"
+exhibition: "Exhibited in rễ-root, Semester 3 2025, RMIT University Vietnam"
 portfolioUrl: "https://duongnam30.pixieset.com/cocreativephotographycollectionduongnam/"
 imagePath: "/cultural-visions/images/archive/indochine/co.jpg"
 thumbnailPath: "/cultural-visions/images/archive/indochine/thumbnail-co.jpg"

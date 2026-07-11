@@ -8,7 +8,7 @@ cohort: "3-2025"
 year: 2025
 campus: "Saigon"
 medium: "Mixed Media Installation, Accordion-Fold Zine, Print, Lighting"
-exhibition: "rễ-root, Semester 3 2025, RMIT University Vietnam"
+exhibition: "Exhibited in rễ-root, Semester 3 2025, RMIT University Vietnam"
 portfolioUrl: "https://aliciayhuynh.wordpress.com/"
 imagePath: "/cultural-visions/images/archive/alicia-y-huynh/intra-self-inter-self.jpg"
 thumbnailPath: "/cultural-visions/images/archive/alicia-y-huynh/thumbnail-intra-self-inter-self.jpg"

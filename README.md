@@ -20,9 +20,9 @@ Current registry:
 | CV-SG-002 | Mapping my Inner Self | Nadine Benedix | re-root S1 2026 |
 | CV-SG-003 | Ba - Relic of the past | Quoc Chau | re-root S1 2026 |
 | CV-SG-004 | Fallen leaves return to their roots | Bluefinsia (Nga Le Thi Tuyet) | re-root S1 2026 |
-| CV-SG-005 | Cyclo at Dusk | Tôn Nguyễn | placeholder content |
-| CV-SG-006 | Monsoon Market | Tôn Nguyễn | placeholder content |
-| CV-SG-007 | Wire City | Tôn Nguyễn | placeholder content |
+| CV-SG-005 | Cyclo at Dusk | Tôn Nguyễn | retired 11 Jul 2026 (placeholder removed) |
+| CV-SG-006 | Monsoon Market | Tôn Nguyễn | retired 11 Jul 2026 (placeholder removed) |
+| CV-SG-007 | Wire City | Tôn Nguyễn | retired 11 Jul 2026 (placeholder removed) |
 | CV-SG-008 | Layers of Life | Florin Schroth | rễ-root 3-2025 |
 | CV-SG-009 | vị-nhà (something that tastes like home) | Le Duc Anh | rễ-root 3-2025 |
 | CV-SG-010 | i miss | Emma | rễ-root 3-2025 |
@@ -30,11 +30,13 @@ Current registry:
 | CV-SG-012 | Toi Tim Ve | Bui Ngoc Kieu Anh | rễ-root 3-2025 |
 | CV-SG-013 | Có | Indochine (Nguyen Huu Nam Duong) | rễ-root 3-2025 |
 | CV-SG-014 | Fear of being Wrong | Nguyễn Anh Thư | rễ-root 3-2025 |
-| CV-HN-001 | Lantern Festival, Hoi An | Ngô Đình Hoàng Phước | placeholder content |
-| CV-HN-002 | Lotus Study No. 3 | Ngô Đình Hoàng Phước | placeholder content |
-| CV-HN-003 | Morning Offering | Ngô Đình Hoàng Phước | placeholder content |
+| CV-SG-015 | Mẫu (母, Mother) | Ton Nguyen | honored; presented to the Australian Minister for Education, 10 Dec 2025 |
+| CV-SG-016 | Hưng Long (興龍, Rising Dragon) | Ngo Dinh Hoang Phuoc | honored; presented to the Governor-General of Australia, 12 Sep 2025 |
+| CV-HN-001 | Lantern Festival, Hoi An | Ngô Đình Hoàng Phước | retired 11 Jul 2026 (placeholder removed) |
+| CV-HN-002 | Lotus Study No. 3 | Ngô Đình Hoàng Phước | retired 11 Jul 2026 (placeholder removed) |
+| CV-HN-003 | Morning Offering | Ngô Đình Hoàng Phước | retired 11 Jul 2026 (placeholder removed) |
 
-Works marked "placeholder content" have demo images, statements, and bios written before real material was collected. Replace them with the artists' real work; keep the ID if the same work is replaced in place, otherwise retire the ID and take the next free number.
+Retired IDs belonged to placeholder entries (demo images and invented texts) that were removed when real work arrived; per the never-reuse rule those numbers stay retired. The Hanoi registry is currently empty of live works; new Hanoi accessions start at CV-HN-004.
 
 ## Adding a work
 

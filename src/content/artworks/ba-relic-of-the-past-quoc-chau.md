@@ -8,7 +8,7 @@ cohort: "2026"
 year: 2026
 campus: "Saigon"
 medium: "Mixed Media Installation"
-exhibition: "re-root, Semester 1 2026, RMIT University Vietnam"
+exhibition: "Exhibited in re-root, Semester 1 2026, RMIT University Vietnam"
 portfolioUrl: "https://s4014902.myportfolio.com/"
 imagePath: "/cultural-visions/images/archive/quoc-chau/ba-relic-of-the-past.jpg"
 thumbnailPath: "/cultural-visions/images/archive/quoc-chau/thumbnail-ba-relic-of-the-past.jpg"

@@ -8,7 +8,7 @@ cohort: "2026"
 year: 2026
 campus: "Saigon"
 medium: "Alternative Photography: Chlorophyll Print"
-exhibition: "re-root, Semester 1 2026, RMIT University Vietnam"
+exhibition: "Exhibited in re-root, Semester 1 2026, RMIT University Vietnam"
 portfolioUrl: "https://bluefinsia.github.io/photography-portfolio/"
 imagePath: "/cultural-visions/images/archive/bluefinsia/fallen-leaves-return-to-their-roots.jpg"
 thumbnailPath: "/cultural-visions/images/archive/bluefinsia/thumbnail-fallen-leaves-return-to-their-roots.jpg"

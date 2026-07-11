@@ -68,7 +68,7 @@ export default function HonoredWorkCard({ artwork, index }: HonoredWorkCardProps
         <div className="space-y-6 lg:py-4">
           <div>
             <p className="mb-2" style={monoLabel}>
-              Honored Work
+              Honored Work · {artwork.catalogueId}
             </p>
             <h2
               className="text-3xl sm:text-4xl leading-tight"
@@ -88,7 +88,20 @@ export default function HonoredWorkCard({ artwork, index }: HonoredWorkCardProps
               }}
             >
               {artwork.year}
+              {artwork.medium ? ` · ${artwork.medium}` : ""}
             </p>
+            {artwork.exhibition && (
+              <p
+                className="mt-1"
+                style={{
+                  fontFamily: "var(--mono)",
+                  fontSize: "0.68rem",
+                  color: "var(--text-dim)",
+                }}
+              >
+                {artwork.exhibition}
+              </p>
+            )}
           </div>
 
           <div className="flex flex-wrap gap-2">
@@ -97,26 +110,30 @@ export default function HonoredWorkCard({ artwork, index }: HonoredWorkCardProps
             ))}
           </div>
 
-          <div>
-            <h3 className="mb-3" style={monoLabel}>
-              Artist Statement
-            </h3>
-            <p className="text-sm leading-relaxed" style={{ color: "var(--text)" }}>
-              {artwork.artistStatement}
-            </p>
-          </div>
+          {artwork.artistStatement && (
+            <div>
+              <h3 className="mb-3" style={monoLabel}>
+                Artist Statement
+              </h3>
+              <p className="text-sm leading-relaxed" style={{ color: "var(--text)" }}>
+                {artwork.artistStatement}
+              </p>
+            </div>
+          )}
 
-          <div>
-            <h3 className="mb-3" style={monoLabel}>
-              Curator&#39;s Note
-            </h3>
-            <p
-              className="text-base leading-relaxed italic"
-              style={{ fontFamily: "var(--serif)", color: "var(--text)" }}
-            >
-              {artwork.curatorNote}
-            </p>
-          </div>
+          {artwork.curatorNote && (
+            <div>
+              <h3 className="mb-3" style={monoLabel}>
+                Curator&#39;s Note
+              </h3>
+              <p
+                className="text-base leading-relaxed italic"
+                style={{ fontFamily: "var(--serif)", color: "var(--text)" }}
+              >
+                {artwork.curatorNote}
+              </p>
+            </div>
+          )}
 
           <div className="pt-2">
             <p
