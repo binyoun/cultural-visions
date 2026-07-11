@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { sortArtworks, filterArtworksByTags } from "@/lib/sortUtils";
 import type { SortOption } from "@/lib/sortUtils";
 import type { ArtworkMatter } from "@/types/artwork";
@@ -26,6 +26,18 @@ export default function CampusArchive({
   const [activeTags, setActiveTags] = useState<string[]>([]);
   const [sort, setSort] = useState<SortOption>("year-desc");
   const [cardSize, setCardSize] = useState(340);
+
+  /* Restore after mount: the prerendered HTML always uses the default,
+     so reading localStorage during render would mismatch hydration */
+  useEffect(() => {
+    const saved = Number(localStorage.getItem("cv-card-size"));
+    if (saved >= 220 && saved <= 560) setCardSize(saved);
+  }, []);
+
+  const handleCardSizeChange = (size: number) => {
+    setCardSize(size);
+    localStorage.setItem("cv-card-size", String(size));
+  };
 
   const filteredAndSorted = useMemo(() => {
     const filtered = filterArtworksByTags(initialArtworks, activeTags);
@@ -89,7 +101,7 @@ export default function CampusArchive({
         count={filteredAndSorted.length}
         total={initialArtworks.length}
         cardSize={cardSize}
-        onCardSizeChange={setCardSize}
+        onCardSizeChange={handleCardSizeChange}
       />
       <PageWrapper className="mt-6">
         <ArchiveGrid artworks={filteredAndSorted} cardSize={cardSize} />
