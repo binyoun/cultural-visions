@@ -97,6 +97,7 @@ export default function FilterBar({
                 color: "var(--text)",
               }}
             >
+              <option value="catalogue">Catalogue No.</option>
               <option value="year-desc">Year: Newest</option>
               <option value="year-asc">Year: Oldest</option>
               <option value="artist-az">Artist: A-Z</option>

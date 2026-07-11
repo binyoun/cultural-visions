@@ -1,6 +1,6 @@
 import type { ArtworkMatter } from "@/types/artwork";
 
-export type SortOption = "year-desc" | "year-asc" | "artist-az";
+export type SortOption = "catalogue" | "year-desc" | "year-asc" | "artist-az";
 
 export function sortArtworks(
   artworks: ArtworkMatter[],
@@ -8,6 +8,8 @@ export function sortArtworks(
 ): ArtworkMatter[] {
   const copy = [...artworks];
   switch (sort) {
+    case "catalogue":
+      return copy.sort((a, b) => a.catalogueId.localeCompare(b.catalogueId));
     case "year-desc":
       return copy.sort((a, b) => b.year - a.year);
     case "year-asc":

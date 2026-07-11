@@ -1,4 +1,5 @@
 ---
+catalogueId: "CV-HN-001"
 title: "Lantern Festival, Hoi An"
 artistName: "Ngô Đình Hoàng Phước"
 artistId: "ngo-dinh-hoang-phuoc"

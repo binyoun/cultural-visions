@@ -16,7 +16,9 @@ export async function generateMetadata({ params }: Props) {
   if (!artwork) return {};
   return {
     title: `${artwork.title} — ${artwork.artistName} | Cultural Visions`,
-    description: artwork.artistStatement.slice(0, 160),
+    description:
+      artwork.artistStatement?.slice(0, 160) ??
+      `${artwork.catalogueId}: ${artwork.title} by ${artwork.artistName}, Cultural Visions archive, RMIT University Vietnam.`,
   };
 }
 

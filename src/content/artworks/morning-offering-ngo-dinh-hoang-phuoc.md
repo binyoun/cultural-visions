@@ -1,4 +1,5 @@
 ---
+catalogueId: "CV-HN-003"
 title: "Morning Offering"
 artistName: "Ngô Đình Hoàng Phước"
 artistId: "ngo-dinh-hoang-phuoc"

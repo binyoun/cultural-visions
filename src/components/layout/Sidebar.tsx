@@ -11,6 +11,7 @@ import { usePathname } from "next/navigation";
 
 export interface SidebarEntry {
   slug: string;
+  catalogueId: string;
   title: string;
   year: number;
   campus: "Hanoi" | "Saigon";
@@ -110,7 +111,7 @@ function SidebarLink({ entry }: { entry: SidebarEntry }) {
           flexShrink: 0,
         }}
       >
-        {entry.year}
+        {entry.catalogueId}
       </span>
     </Link>
   );
@@ -131,11 +132,11 @@ export default function Sidebar({ entries }: SidebarProps) {
 
   if (pathname === "/choose/") return null;
 
-  const byYear = (a: SidebarEntry, b: SidebarEntry) =>
-    b.year - a.year || a.title.localeCompare(b.title);
-  const hanoi = entries.filter((e) => e.campus === "Hanoi").sort(byYear);
-  const saigon = entries.filter((e) => e.campus === "Saigon").sort(byYear);
-  const honored = entries.filter((e) => e.isHonored).sort(byYear);
+  const byCatalogue = (a: SidebarEntry, b: SidebarEntry) =>
+    a.catalogueId.localeCompare(b.catalogueId);
+  const hanoi = entries.filter((e) => e.campus === "Hanoi").sort(byCatalogue);
+  const saigon = entries.filter((e) => e.campus === "Saigon").sort(byCatalogue);
+  const honored = entries.filter((e) => e.isHonored).sort(byCatalogue);
 
   return (
     <>

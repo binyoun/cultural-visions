@@ -19,9 +19,9 @@ export default function ArtworkDetail({ artwork }: ArtworkDetailProps) {
           <ArtworkImage artwork={artwork} />
         </div>
 
-        {/* Meta panel — scrollable */}
+        {/* Meta panel — scrollable; top padding clears the fixed header */}
         <div
-          className="p-6 lg:p-10 overflow-y-auto"
+          className="p-6 pt-20 lg:p-10 lg:pt-20 overflow-y-auto"
           style={{
             backgroundColor: "var(--surface)",
             borderLeft: "1px solid var(--line)",

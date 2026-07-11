@@ -38,10 +38,26 @@ function SectionLabel({ en, vi }: { en: string; vi: string }) {
 export default function ArtworkMeta({ artwork }: ArtworkMetaProps) {
   return (
     <div className="space-y-8">
-      {/* Title & Artist */}
+      {/* Catalogue number — reference for the selection process */}
       <div>
+        <span
+          className="inline-block uppercase"
+          style={{
+            fontFamily: "var(--mono)",
+            fontSize: "0.68rem",
+            letterSpacing: "0.2em",
+            color: "var(--accent)",
+            border: "1px solid var(--line)",
+            borderRadius: "5px",
+            padding: "4px 10px",
+          }}
+        >
+          {artwork.catalogueId}
+        </span>
+
+        {/* Title & Artist */}
         <h1
-          className="text-3xl sm:text-4xl leading-tight"
+          className="mt-4 text-3xl sm:text-4xl leading-tight"
           style={{ fontFamily: "var(--serif)", color: "var(--text-bright)" }}
         >
           {artwork.title}
@@ -58,7 +74,20 @@ export default function ArtworkMeta({ artwork }: ArtworkMetaProps) {
           }}
         >
           {artwork.year}
+          {artwork.medium ? ` · ${artwork.medium}` : ""}
         </p>
+        {artwork.exhibition && (
+          <p
+            className="mt-1"
+            style={{
+              fontFamily: "var(--mono)",
+              fontSize: "0.68rem",
+              color: "var(--text-dim)",
+            }}
+          >
+            Exhibited: {artwork.exhibition}
+          </p>
+        )}
       </div>
 
       {/* Tags */}
@@ -69,34 +98,66 @@ export default function ArtworkMeta({ artwork }: ArtworkMetaProps) {
       </div>
 
       {/* Artist Statement */}
-      <div>
-        <SectionLabel en="Artist Statement" vi="Tuyên Bố Nghệ Sĩ" />
-        <p className="text-sm leading-relaxed" style={{ color: "var(--text)" }}>
-          {artwork.artistStatement}
-        </p>
-      </div>
+      {artwork.artistStatement && (
+        <div>
+          <SectionLabel en="Artist Statement" vi="Tuyên Bố Nghệ Sĩ" />
+          <p className="text-sm leading-relaxed" style={{ color: "var(--text)" }}>
+            {artwork.artistStatement}
+          </p>
+        </div>
+      )}
 
       {/* Curator Note */}
-      <div>
-        <SectionLabel en="Curator's Note" vi="Ghi Chú Giám Tuyển" />
-        <p
-          className="text-base leading-relaxed italic"
-          style={{ fontFamily: "var(--serif)", color: "var(--text)" }}
-        >
-          {artwork.curatorNote}
-        </p>
-      </div>
+      {artwork.curatorNote && (
+        <div>
+          <SectionLabel en="Curator's Note" vi="Ghi Chú Giám Tuyển" />
+          <p
+            className="text-base leading-relaxed italic"
+            style={{ fontFamily: "var(--serif)", color: "var(--text)" }}
+          >
+            {artwork.curatorNote}
+          </p>
+        </div>
+      )}
 
       {/* Artist Bio */}
-      <div
-        className="pt-6"
-        style={{ borderTop: "1px solid var(--line-soft)" }}
-      >
-        <SectionLabel en="About the Artist" vi="Về Nghệ Sĩ" />
-        <p className="text-sm leading-relaxed" style={{ color: "var(--text)" }}>
-          {artwork.longBio}
-        </p>
-      </div>
+      {(artwork.longBio || artwork.shortBio) && (
+        <div
+          className="pt-6"
+          style={{ borderTop: "1px solid var(--line-soft)" }}
+        >
+          <SectionLabel en="About the Artist" vi="Về Nghệ Sĩ" />
+          <p className="text-sm leading-relaxed" style={{ color: "var(--text)" }}>
+            {artwork.longBio || artwork.shortBio}
+          </p>
+        </div>
+      )}
+
+      {/* More work — external portfolio */}
+      {artwork.portfolioUrl && (
+        <div
+          className="pt-6"
+          style={{ borderTop: "1px solid var(--line-soft)" }}
+        >
+          <SectionLabel en="More Work" vi="Xem Thêm Tác Phẩm" />
+          <a
+            href={artwork.portfolioUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="nav-link uppercase"
+            style={{
+              fontFamily: "var(--mono)",
+              fontSize: "0.72rem",
+              letterSpacing: "0.08em",
+              color: "var(--accent)",
+              textDecoration: "none",
+              transition: "color 0.2s",
+            }}
+          >
+            View {artwork.artistName}&apos;s portfolio ↗
+          </a>
+        </div>
+      )}
 
       {/* Copyright */}
       <div

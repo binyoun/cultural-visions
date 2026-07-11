@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Cultural Visions
 
-## Getting Started
+Curatorial archive of student photography from RMIT University Vietnam, and the selection pool for VVIP photo gifts. Live at [binyoun.github.io/cultural-visions](https://binyoun.github.io/cultural-visions).
 
-First, run the development server:
+Next.js static export, deployed to GitHub Pages by the workflow in `.github/workflows/` on every push to `main`.
+
+## Catalogue numbering
+
+Every artwork carries a permanent catalogue ID in its frontmatter, e.g. `CV-SG-001`:
+
+- `CV` for Cultural Visions, then campus code (`SG` Saigon, `HN` Hanoi), then a 3-digit accession number per campus.
+- Numbers are assigned in order of accession and are **never reused or renumbered**, even if a work is removed. When adding a work, take the next free number for its campus.
+- The ID appears on every archive card, in the sidebar index, and on the artwork page, so a work can be referenced unambiguously during gift selection ("we would like CV-SG-003").
+
+Current registry:
+
+| ID | Work | Artist | Status |
+|---|---|---|---|
+| CV-SG-001 | The Busy Ho Chi Minh | Thomas Fang | re-root S1 2026 |
+| CV-SG-002 | Mapping my Inner Self | Nadine Benedix | re-root S1 2026 |
+| CV-SG-003 | Ba - Relic of the past | Quoc Chau | re-root S1 2026 |
+| CV-SG-004 | Fallen leaves return to their roots | Bluefinsia (Nga Le Thi Tuyet) | re-root S1 2026 |
+| CV-SG-005 | Cyclo at Dusk | Tôn Nguyễn | placeholder content |
+| CV-SG-006 | Monsoon Market | Tôn Nguyễn | placeholder content |
+| CV-SG-007 | Wire City | Tôn Nguyễn | placeholder content |
+| CV-HN-001 | Lantern Festival, Hoi An | Ngô Đình Hoàng Phước | placeholder content |
+| CV-HN-002 | Lotus Study No. 3 | Ngô Đình Hoàng Phước | placeholder content |
+| CV-HN-003 | Morning Offering | Ngô Đình Hoàng Phước | placeholder content |
+
+Works marked "placeholder content" have demo images, statements, and bios written before real material was collected. Replace them with the artists' real work; keep the ID if the same work is replaced in place, otherwise retire the ID and take the next free number.
+
+## Adding a work
+
+1. Put the full image and a thumbnail in `public/images/archive/<artist-id>/`:
+   - full image: `<work-slug>.jpg` (long edge around 1800px)
+   - thumbnail: `thumbnail-<work-slug>.jpg` (`sips --resampleWidth 640 -s format jpeg -s formatOptions 70 in.jpg --out thumbnail-....jpg`)
+2. Create `src/content/artworks/<work-slug>-<artist-id>.md`. Copy the frontmatter of an existing re-root entry as the template. Required fields: `catalogueId`, `title`, `artistName`, `artistId`, `cohort`, `year`, `campus`, `imagePath`, `thumbnailPath`, `imageAlt`, `imageWidth`, `imageHeight`, `tags`, `isHonored`, `featured`. Optional: `medium`, `exhibition`, `portfolioUrl` (renders a "More Work" link to the artist's portfolio), `shortBio`, `longBio`, `artistStatement`, `curatorNote` (sections render only when present; never invent these).
+3. Image paths in frontmatter must start with `/cultural-visions/` (the GitHub Pages basePath).
+4. `imageWidth`/`imageHeight` are the full image's real pixel dimensions (`sips -g pixelWidth -g pixelHeight file.jpg`); they set the card's aspect ratio.
+5. `npm run build` locally to verify, then commit and push to `main` to deploy.
+
+## Development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run dev     # local dev server
+npm run build   # static export to out/
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Note: this Next.js version may differ from an agent's training data; see `AGENTS.md`.

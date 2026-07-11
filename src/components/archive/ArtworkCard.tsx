@@ -44,6 +44,26 @@ export default function ArtworkCard({ artwork }: ArtworkCardProps) {
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
 
+        {/* Catalogue number — always visible for the selection process */}
+        <span
+          className="absolute top-2 left-2 z-30 uppercase"
+          style={{
+            fontFamily: "var(--mono)",
+            fontSize: "0.58rem",
+            letterSpacing: "0.12em",
+            color: "var(--text-bright)",
+            background: "rgba(5,6,7,0.62)",
+            border: "1px solid var(--line)",
+            borderRadius: "5px",
+            padding: "2px 7px",
+            backdropFilter: "blur(6px)",
+            WebkitBackdropFilter: "blur(6px)",
+            pointerEvents: "none",
+          }}
+        >
+          {artwork.catalogueId}
+        </span>
+
         {/* Transparent overlay — blocks right-click/drag on image */}
         <div
           className="absolute inset-0 z-10"

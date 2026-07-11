@@ -1,4 +1,5 @@
 ---
+catalogueId: "CV-SG-007"
 title: "Wire City"
 artistName: "Tôn Nguyễn"
 artistId: "ton-nguyen"

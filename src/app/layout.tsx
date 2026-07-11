@@ -19,6 +19,7 @@ export default function RootLayout({
 }) {
   const sidebarEntries: SidebarEntry[] = getAllArtworks().map((aw) => ({
     slug: aw.slug,
+    catalogueId: aw.catalogueId,
     title: aw.title,
     year: aw.year,
     campus: aw.campus,

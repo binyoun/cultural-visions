@@ -1,4 +1,5 @@
 ---
+catalogueId: "CV-SG-006"
 title: "Monsoon Market"
 artistName: "Tôn Nguyễn"
 artistId: "ton-nguyen"

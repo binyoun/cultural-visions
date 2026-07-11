@@ -1,4 +1,5 @@
 ---
+catalogueId: "CV-HN-002"
 title: "Lotus Study No. 3"
 artistName: "Ngô Đình Hoàng Phước"
 artistId: "ngo-dinh-hoang-phuoc"
