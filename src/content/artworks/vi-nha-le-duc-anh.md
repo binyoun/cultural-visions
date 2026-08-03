@@ -16,6 +16,12 @@ imageAlt: "A small bamboo frame lashed with palm leaf holds layered cyanotype pr
 imageWidth: 1920
 imageHeight: 1280
 tags: ["#Heritage", "#Memory"]
+artistStatement: |-
+  To me, the word "Roots" brings only one thing to mind: my hometown. The time I spend there is always special to me. I left my hometown at 16 to attend high school in Ho Chi Minh City. It was a strict boarding school, no phones, no internet, and I was only allowed to visit home on weekends. I felt completely isolated from the outside world and cut off from my family. I missed home terribly, which made every trip back an incredibly indescribable emotional experience for me.
+
+  I chose bánh phồng sữa dừa, coconut pancake, as the anchor object for this journey. The visuals of my journey are printed directly onto its surface using cyanotype, a photographic printing process that produces a cyan-blue print using sunlight. The traditional process of making rice paper follows the same logic: after shaping, it must be dried under the sun to take form. Using cyanotype is not just an aesthetic choice, it is a method intrinsically linked to the material's characteristics. Both the medium, the paper, and the message, the image, are born from the same source: sunlight. The display frame is crafted from bamboo, the exact same material used for the cake drying racks, bound together with banana leaves; my father personally helped me build it.
+
+  The most important outcome of this project is the story of Roots, my connection to the place where I grew up. Through this assignment I discovered the most effective way to print on this material as beautifully as possible. It was Bin who first suggested I experiment with cyanotype; the more I experimented, the more engaged I became, and I came to realize that cyanotype, in many ways, is deeply connected to bánh tráng, both in material qualities and in the story they carry.
 isHonored: false
 featured: false
 ---
