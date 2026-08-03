@@ -1,0 +1,3 @@
+catalogueId,artist,title,statement,portfolioUrl,image_filename,notes
+CV-SG-017,Nguyen Bao Tran,"Come to the Other Side, No. 9",,https://traan.cargo.site/,,DONE - portfolioUrl fixed in repo 2026-08-03
+,,,,,,new Hanoi work - leave catalogueId blank, I will assign CV-HN-004 onward in order

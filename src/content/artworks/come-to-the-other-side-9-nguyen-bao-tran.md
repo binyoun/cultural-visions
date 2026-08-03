@@ -8,7 +8,7 @@ year: 2026
 campus: "Saigon"
 medium: "Street Photography and Digital Manipulation, Black and White"
 exhibition: "Presented to the Australian Consul-General in Ho Chi Minh City, 14 April 2026"
-portfolioUrl: "https://www.instagram.com/rmitscd/"
+portfolioUrl: "https://traan.cargo.site/"
 imagePath: "/cultural-visions/images/archive/nguyen-bao-tran/come-to-the-other-side-9.jpg"
 thumbnailPath: "/cultural-visions/images/archive/nguyen-bao-tran/thumbnail-come-to-the-other-side-9.jpg"
 imageAlt: "Black and white digital manipulation: hundreds of repeated street photographs of Ho Chi Minh City tile into two swirling vortices that meet along a bright diagonal seam, as if the city were folding into itself."
