@@ -17,7 +17,7 @@ Current registry:
 | ID | Work | Artist | Status |
 |---|---|---|---|
 | CV-SG-001 | The Busy Ho Chi Minh | Thomas Fang | re-root S1 2026 |
-| CV-SG-002 | Mapping my Inner Self | Nadine Benedix | re-root S1 2026 |
+| CV-SG-002 | Mapping my Inner Self | Nadine Benedix | retired 2026-08-03 (removed) |
 | CV-SG-003 | Ba - Relic of the past | Quoc Chau | re-root S1 2026 |
 | CV-SG-004 | Fallen leaves return to their roots | Bluefinsia (Nga Le Thi Tuyet) | re-root S1 2026 |
 | CV-SG-005 | Cyclo at Dusk | Tôn Nguyễn | retired 11 Jul 2026 (placeholder removed) |
