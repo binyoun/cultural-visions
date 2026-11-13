@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "export:gallery": "node scripts/export-artworks.mjs",
+    "predev": "node scripts/export-artworks.mjs",
+    "prebuild": "node scripts/export-artworks.mjs",
     "dev": "next dev",
     "build": "next build",
     "start": "next start"

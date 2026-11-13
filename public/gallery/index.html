@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Gallery | Cultural Visions</title>
+<meta name="description" content="Walk through the Cultural Visions gallery of student photography from RMIT University Vietnam.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#050607;--surface:#0a0c0e;--border:#191d22;--text:#99a2ad;--dim:#545b66;--bright:#eef1f5;--accent:#c8956c;--accent2:#7c9cba;
+  --mono:"JetBrains Mono",monospace;--serif:"Newsreader",Georgia,serif}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--text);font-family:var(--mono);overflow:hidden}
+canvas#c{position:fixed;inset:0;width:100%;height:100%;display:block;touch-action:none;cursor:grab}
+canvas#c.drag{cursor:grabbing}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.bar{position:fixed;left:0;right:0;top:0;display:flex;align-items:center;gap:14px;padding:14px 18px;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;z-index:5;
+  background:linear-gradient(#050607cc,#05060700);pointer-events:none}
+.bar>*{pointer-events:auto}
+.bar a{text-decoration:none;color:var(--dim)}
+.bar a b{color:var(--bright)}
+.bar .sp{flex:1}
+.rooms{display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end}
+.rooms button{padding:5px 9px;border:1px solid var(--border);color:var(--dim);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;background:#050607aa}
+.rooms button:hover,.rooms button.on{color:var(--bright);border-color:var(--dim)}
+.tour{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom));transform:translateX(-50%);display:flex;align-items:center;gap:2px;z-index:5;
+  background:#0a0c0ee6;border:1px solid var(--border);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase}
+.tour button{padding:11px 16px;color:var(--bright)}
+.tour button:hover{color:var(--accent)}
+.tour span{padding:0 12px;color:var(--dim);white-space:nowrap;min-width:150px;text-align:center}
+.hint{position:fixed;left:18px;bottom:calc(18px + env(safe-area-inset-bottom));font-size:.66rem;letter-spacing:.08em;color:var(--dim);line-height:1.7;z-index:4;max-width:240px;transition:opacity .6s}
+.hint.off{opacity:0}
+.panel{position:fixed;right:18px;top:64px;bottom:76px;width:min(360px,calc(100vw - 36px));background:#0a0c0ef2;border:1px solid var(--border);padding:22px 22px 18px;z-index:6;
+  display:flex;flex-direction:column;gap:12px;transform:translateX(calc(100% + 30px));transition:transform .35s ease;overflow:auto}
+.panel.on{transform:none}
+.panel .id{align-self:flex-start;font-size:.7rem;letter-spacing:.14em;border:1px solid var(--accent);color:var(--accent);padding:3px 8px}
+.panel h2{font-family:var(--serif);font-weight:300;font-size:1.7rem;line-height:1.15;color:var(--bright);margin:0}
+.panel .artist{font-family:var(--serif);font-style:italic;font-size:1.1rem;color:var(--text)}
+.panel .meta{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);line-height:1.7}
+.panel .hon{color:#e2606a}
+.panel p{font-family:var(--serif);font-size:1rem;line-height:1.55;margin:0;white-space:pre-line;color:var(--text)}
+.panel .links{margin-top:auto;display:flex;flex-direction:column;gap:8px;padding-top:12px;border-top:1px solid var(--border);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase}
+.panel .links a{color:var(--accent);text-decoration:none}
+.panel .x{position:absolute;right:10px;top:8px;font-size:1.1rem;color:var(--dim);padding:6px}
+#load{position:fixed;inset:0;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;z-index:20;transition:opacity .8s}
+#load.off{opacity:0;pointer-events:none}
+#load h1{font-family:var(--serif);font-weight:300;font-size:clamp(2rem,6vw,3.4rem);color:var(--bright);margin:0;text-shadow:0 0 26px rgba(216,170,120,.25)}
+#load div{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+@media (max-width:700px){
+  .rooms{display:none}
+  .hint{display:none}
+  .panel{left:0;right:0;top:auto;bottom:calc(62px + env(safe-area-inset-bottom));width:auto;max-height:38vh;transform:translateY(calc(100% + 80px));padding:16px 18px;gap:8px}
+  .panel h2{font-size:1.35rem}
+  .panel p{font-size:.95rem}
+  .tour{width:calc(100vw - 24px);justify-content:space-between}
+  .tour span{min-width:0;max-width:38vw;overflow:hidden;text-overflow:ellipsis}
+}
+</style>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js"}}</script>
+</head>
+<body>
+<canvas id="c" aria-label="Walkable 3D gallery. Use the Previous and Next buttons to tour the works."></canvas>
+<div class="bar">
+  <a href="../"><b>cultural.visions</b> /gallery</a>
+  <a href="../">&larr; Archive</a>
+  <span class="sp"></span>
+  <div class="rooms" id="rooms"></div>
+</div>
+<div class="hint" id="hint">Drag to look around<br>W A S D or arrow keys to walk<br>Click the floor to walk there<br>Click a work to view it</div>
+<div class="tour">
+  <button id="prev" aria-label="Previous work">&larr; Prev</button>
+  <span id="where">Entrance</span>
+  <button id="next" aria-label="Next work">Next &rarr;</button>
+</div>
+<aside class="panel" id="panel" aria-live="polite">
+  <button class="x" id="close" aria-label="Close">&times;</button>
+  <div class="id" id="pId"></div>
+  <h2 id="pTitle"></h2>
+  <div class="artist" id="pArtist"></div>
+  <div class="meta" id="pMeta"></div>
+  <p id="pText"></p>
+  <div class="links" id="pLinks"></div>
+</aside>
+<div id="load"><h1>Cultural Visions</h1><div id="loadMsg">Opening the gallery</div></div>
+<script type="module" src="gallery.js"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+CULTURAL VISIONS: SELECTED WORK INTAKE FORM
+Build this as a Microsoft Form (RMIT account), one response per work.
+Keep the question wording close to this so intake/ingest.py can read the export.
+
+Form title
+Cultural Visions: your selected work
+
+Form description
+Congratulations. Your work has been selected for Cultural Visions, the archive of student photography from RMIT University Vietnam. Please complete this form once for each selected work. It takes about five minutes. Your image will be published with a permanent catalogue number that you can cite in your portfolio or CV.
+
+1. Name as you want to be credited
+   Type: Text, required
+   Help text: Exactly as it should appear next to your work.
+
+2. Student number
+   Type: Text, required
+   Help text: For our records only. It will not be published.
+
+3. Campus
+   Type: Choice, required
+   Options: Saigon South / Hanoi
+
+4. Course
+   Type: Choice, required
+   Options: Photography 101 (VART3626) / Creative Photography (VART3670) / Commercial Photography (VART3672) / Other
+
+5. Title of the work
+   Type: Text, required
+
+6. Artist statement
+   Type: Long text, required
+   Help text: 50 to 80 words, in your own words. What is the work about, and why did you make it?
+
+7. Describe your image in one sentence
+   Type: Text, required
+   Help text: A plain description of what we see, for visitors who use a screen reader.
+
+8. Medium
+   Type: Text, optional
+   Help text: For example: documentary photography, digital collage, black and white film.
+
+9. Portfolio or Instagram link
+   Type: Text, optional
+   Help text: One link, starting with https://
+
+10. Upload your original image file
+    Type: File upload, required, 1 file, images only, up to 100MB
+    Help text: The full-resolution file exported from your camera or editing software (JPG, PNG or TIFF), long edge at least 3000 pixels. Please do not send a screenshot or an image copied from a PDF.
+
+11. I consent to publish this work
+    Type: Choice, required
+    Options: Yes, I consent / No
+    Help text: I made this work myself, and I allow RMIT University Vietnam to publish it with my name in the Cultural Visions archive and gallery. Anyone who can be identified in the image has agreed to be shown. I keep the copyright and can ask for the work to be removed at any time.
+
+12. I agree this work may be considered as a VVIP gift
+    Type: Choice, required
+    Options: Yes / No
+    Help text: Selected works are sometimes printed and presented to official guests of the university. If your work is chosen, we will contact you first.
+
+Thank-you message
+Thank you. We will email you when your work is live, with its catalogue number and link.
+
+AFTER THE FORM CLOSES
+1. In Forms, open Responses and choose "Open in Excel". Save the .xlsx to Downloads.
+2. In OneDrive, open Apps > Microsoft Forms > (this form) > Question, and download the upload folder.
+3. From the repo: python3 intake/ingest.py --responses <the .xlsx> --files <the folder> --semester 2026-S3
+   Check the printed plan, then run it again with --write.

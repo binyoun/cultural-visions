@@ -132,6 +132,19 @@ export default function Header() {
           >
             Honored
           </Link>
+          {/* Plain anchor: the walkable gallery is a static page outside the Next router */}
+          <a
+            href="/cultural-visions/gallery/"
+            className="nav-link"
+            style={{
+              ...monoLink,
+              color: "var(--text-dim)",
+              borderBottom: "1px solid transparent",
+              paddingBottom: "2px",
+            }}
+          >
+            Gallery
+          </a>
         </div>
       </div>
     </header>

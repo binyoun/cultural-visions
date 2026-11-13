@@ -57,3 +57,21 @@ npm run build   # static export to out/
 ```
 
 Note: this Next.js version may differ from an agent's training data; see `AGENTS.md`.
+
+## Semester intake (selected works)
+
+Each semester's best works come in through one form and one script.
+
+1. Choose works from the students' PDF folios as before (the PDFs are for choosing only; images copied out of a PDF are too small to publish or print).
+2. Send selected students the intake form. The questions are in `intake/form-questions.txt` (build it once as a Microsoft Form and reuse it). It collects the original image file, title, statement, credit name, link and consent.
+3. Download the responses (.xlsx) and the upload folder, then run:
+   `python3 intake/ingest.py --responses <file.xlsx> --files <folder> --semester 2026-S3` (dry run), and again with `--write`.
+   The script assigns the next catalogue numbers, writes the entries with `semester` and `course` fields, makes the web image and thumbnail, and keeps the untouched originals and the consent ledger in `intake/private/` (git-ignored, never published).
+4. `npm run build`, review, commit and push.
+
+Works that carry a `semester` field hang together in their own room in the walkable gallery. Older entries without one stay in the Saigon and Hanoi archive rooms.
+
+## Walkable gallery
+
+`public/gallery/` is a plain Three.js page (no framework) served at `/cultural-visions/gallery/`. It reads `public/gallery/artworks.json`, which `scripts/export-artworks.mjs` generates from the Markdown archive before every `npm run dev` and `npm run build` (the file is git-ignored). Rooms are generated from the data: Honoured, one room per semester (newest first), then Saigon and Hanoi. `?work=CV-SG-015` opens the gallery in front of that work; each artwork page links to it.
+

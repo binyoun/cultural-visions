@@ -17,6 +17,12 @@
 /.next/
 /out/
 
+# generated for the walkable gallery (npm run export:gallery)
+/public/gallery/artworks.json
+
+# intake: originals, consent ledger and form exports never go in the public repo
+/intake/private/
+
 # production
 /build
 

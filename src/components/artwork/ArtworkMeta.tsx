@@ -165,6 +165,27 @@ export default function ArtworkMeta({ artwork }: ArtworkMetaProps) {
         </div>
       )}
 
+      {/* Walkable gallery: static page outside the Next router, so a plain anchor */}
+      <div
+        className="pt-6"
+        style={{ borderTop: "1px solid var(--line-soft)" }}
+      >
+        <a
+          href={`/cultural-visions/gallery/?work=${encodeURIComponent(artwork.catalogueId)}`}
+          className="nav-link uppercase"
+          style={{
+            fontFamily: "var(--mono)",
+            fontSize: "0.72rem",
+            letterSpacing: "0.08em",
+            color: "var(--accent)",
+            textDecoration: "none",
+            transition: "color 0.2s",
+          }}
+        >
+          See it in the gallery →
+        </a>
+      </div>
+
       {/* Copyright */}
       <div
         className="pt-4"
